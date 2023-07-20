@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48825682-6c45-4505-8438-cadf29269360" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/features/posts/postsAPI.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/posts/postsSlice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +16,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -29,6 +34,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/avoskresenskaya/projects/test-assignments/vite-redux-project/src",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
@@ -40,7 +46,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/features/posts" />
+      <recent name="$PROJECT_DIR$/src/features" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -76,7 +89,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1689846097388</updated>
-      <workItem from="1689846103736" duration="1708000" />
+      <workItem from="1689846103736" duration="3469000" />
+      <workItem from="1689866884153" duration="299000" />
     </task>
     <task id="LOCAL-00001" summary="feat(*): starter files">
       <created>1689846183716</created>
@@ -106,16 +120,35 @@
       <option name="project" value="LOCAL" />
       <updated>1689846381020</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat(*): add mantine">
+      <created>1689848893932</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689848893932</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(*): starter files" />
     <MESSAGE value="feat(*): edit base url" />
     <MESSAGE value="feat(*): npm install" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(*): npm install" />
+    <MESSAGE value="feat(*): add mantine" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(*): add mantine" />
   </component>
 </project>
