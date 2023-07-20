@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48825682-6c45-4505-8438-cadf29269360" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/features/posts/postsAPI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/posts/postsSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/posts/posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/posts/posts.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/avoskresenskaya/projects/test-assignments/vite-redux-project/src",
+    "last_opened_file_path": "/Users/avoskresenskaya/projects/test-assignments/vite-redux-project/src/features/posts/components",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
@@ -48,9 +46,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/features/posts/components" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/features/posts" />
       <recent name="$PROJECT_DIR$/src/features" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/features/posts/helpers" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -127,7 +130,70 @@
       <option name="project" value="LOCAL" />
       <updated>1689848893932</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(*): edit eslint version">
+      <created>1689872651631</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689872651631</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat(*): add posts rtk slice">
+      <created>1689872672379</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689872672379</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat(*): add posts component">
+      <created>1689879656955</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689879656955</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat(*): add posts component">
+      <created>1689879982443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689879982443</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat(*): posts fixes">
+      <created>1689882093384</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1689882093384</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat(*): posts fixes">
+      <created>1689882220631</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1689882220631</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat(*): posts fixes">
+      <created>1689882585093</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1689882585093</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat(*): posts fixes">
+      <created>1689882687339</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1689882687339</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat(*): posts fixes">
+      <created>1689882777101</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1689882777101</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +215,11 @@
     <MESSAGE value="feat(*): edit base url" />
     <MESSAGE value="feat(*): npm install" />
     <MESSAGE value="feat(*): add mantine" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(*): add mantine" />
+    <MESSAGE value="feat(*): edit eslint version" />
+    <MESSAGE value="feat(*): add posts rtk slice" />
+    <MESSAGE value="feat(*): add posts reducer" />
+    <MESSAGE value="feat(*): add posts component" />
+    <MESSAGE value="feat(*): posts fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(*): posts fixes" />
   </component>
 </project>

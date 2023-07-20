@@ -1,5 +1,5 @@
 import { Card, Group, Text, Avatar } from "@mantine/core"
-import { PostContents } from "../types"
+import { PostContents} from "./types";
 
 type Props = {
   post: PostContents

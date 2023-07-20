@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
 import { fetchPosts } from "./postsAPI"
-import { PostContents } from "../../types"
+import { PostContents } from "./helpers/types"
 
 export interface PostsState {
-  posts: []
-  status: "idle" | "loading" | "failed"
+  posts: [] | PostContents[]
+  status: "idle" | "loading" | "failed" | "success"
 }
 
 const initialState: PostsState = {
@@ -20,7 +20,8 @@ const initialState: PostsState = {
 // typically used to make async requests.
 export const fetchPostsAsync = createAsyncThunk(
   "posts/fetchPosts",
-  async (params?) => {
+  // TODO: какие параметры должны быть
+  async () => {
     const response = await fetchPosts()
     // The value we return becomes the `fulfilled` action payload
     return response.data
@@ -34,7 +35,7 @@ export const postsSlice = createSlice({
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
     addPost: (state, action: PayloadAction<PostContents>) => {
-      // TODO: добавлять опираясь на timestamp?
+      // TODO: в каком порядке добавлять
       state.posts = [...state.posts, action.payload]
     },
   },
@@ -46,8 +47,8 @@ export const postsSlice = createSlice({
         state.status = "loading"
       })
       .addCase(fetchPostsAsync.fulfilled, (state, action) => {
-        state.status = "idle"
-        state.posts += action.payload
+        state.status = "success"
+        state.posts = [...state.posts, ...action.payload]
       })
       .addCase(fetchPostsAsync.rejected, (state) => {
         state.status = "failed"
@@ -57,7 +58,6 @@ export const postsSlice = createSlice({
 
 export const { addPost } = postsSlice.actions
 
-export const postsSelector = (state: RootState) => state.posts.posts
-export const statusSelector = (state: RootState) => state.posts.status
+export const postsStateSelector = (state: RootState) => state.posts
 
 export default postsSlice.reducer

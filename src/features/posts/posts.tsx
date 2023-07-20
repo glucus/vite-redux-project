@@ -1,27 +1,45 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { postsSelector, statusSelector } from "../posts/postsSlice"
+import { postsStateSelector } from "../posts/postsSlice"
 import { fetchPostsAsync } from "../posts/postsSlice"
 import { useEffect } from "react"
-import { Post } from "../../components/post"
+import { Post } from "./helpers/post"
+import { Loader } from "@mantine/core"
+import { Text } from "@mantine/core"
 
 export const Posts = () => {
-  const posts = useAppSelector(postsSelector)
-  const status = useAppSelector(statusSelector)
+  const { posts, status } = useAppSelector(postsStateSelector)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     // TODO: можно добавить еще условия
-    if (!posts) {
-      fetchPostsAsync()
+    if (status === "idle") {
+      dispatch(fetchPostsAsync())
     }
-  }, [posts, fetchPostsAsync])
+  }, [posts, dispatch, fetchPostsAsync])
 
-  if (posts) {
+  if (status === "loading") {
+    return <Loader />
+  }
+  if (status === "failed") {
+    return (
+      <div>
+        <Text>Failed loading content</Text>
+      </div>
+    )
+  }
+  if (status === "success" && posts?.length > 0) {
     return (
       <div>
         {posts.map((post) => (
           <Post post={post} key={post.id} />
         ))}
+      </div>
+    )
+  }
+  if (status === "success" && !posts) {
+    return (
+      <div>
+        <Text>No posts found</Text>
       </div>
     )
   }
