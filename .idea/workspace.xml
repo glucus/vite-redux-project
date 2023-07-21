@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="48825682-6c45-4505-8438-cadf29269360" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/posts/posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/posts/posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/posts/helpers/addPostForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/posts/helpers/addPostForm.tsx" afterDir="false" />
+    </list>
+    <list id="89da6e49-190f-43a3-88cf-6d403e9214cc" name="New changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +20,18 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="8" end1="8" start2="8" end2="9" changelist="48825682-6c45-4505-8438-cadf29269360" />
+        <range start1="9" end1="9" start2="10" end2="13" changelist="48825682-6c45-4505-8438-cadf29269360" />
+        <range start1="19" end1="19" start2="23" end2="34" changelist="48825682-6c45-4505-8438-cadf29269360" />
+        <range start1="55" end1="55" start2="70" end2="71" changelist="89da6e49-190f-43a3-88cf-6d403e9214cc" />
+        <range start1="195" end1="196" start2="211" end2="240" changelist="48825682-6c45-4505-8438-cadf29269360" />
+        <range start1="222" end1="223" start2="266" end2="269" changelist="48825682-6c45-4505-8438-cadf29269360" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -193,7 +208,35 @@
       <option name="project" value="LOCAL" />
       <updated>1689882777101</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat(*): posts fixes">
+      <created>1689882915788</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1689882915788</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat(*): posts fixes">
+      <created>1689882979792</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1689882979792</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat(*): add new post modal">
+      <created>1689939408966</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1689939408966</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat(*): add new post form">
+      <created>1689953455293</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1689953455293</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +263,8 @@
     <MESSAGE value="feat(*): add posts reducer" />
     <MESSAGE value="feat(*): add posts component" />
     <MESSAGE value="feat(*): posts fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(*): posts fixes" />
+    <MESSAGE value="feat(*): add new post modal" />
+    <MESSAGE value="feat(*): add new post form" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(*): add new post form" />
   </component>
 </project>
