@@ -1,13 +1,18 @@
 import { useForm, hasLength } from "@mantine/form"
 import { TextInput, Textarea, Box, Group, Button } from "@mantine/core"
 import { useCallback } from "react"
+// import { createPost } from "../posts/postsAPI"
 
 export type AddPostFormState = {
   name: string
   message: string
 }
 
-export const AddPostForm = () => {
+type Props = {
+  close: () => void
+}
+
+export const AddPostForm = ({ close }: Props) => {
   const form = useForm({
     initialValues: {
       name: "",
@@ -23,10 +28,13 @@ export const AddPostForm = () => {
   })
 
   // TODO: вызывать thunk с mockApi, после чего в случае успеха закрывать модалку (форма ресетится при закрытии)
-  const handleSubmit = useCallback(
-    (data: AddPostFormState) => console.log(data),
-    [],
-  )
+  const handleSubmit = useCallback((data: AddPostFormState) => {
+    // createPost(data).then(() => {
+    console.log("added post ", data)
+    form.reset()
+    close()
+    // })
+  }, [])
 
   return (
     <Box
