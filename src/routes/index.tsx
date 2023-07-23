@@ -1,7 +1,7 @@
 import React from "react";
 
 import App from '../App';
-import {Author} from "../features/author/author";
+import { AuthorPage } from "./author"
 
 export const routes = [
     {
@@ -10,6 +10,6 @@ export const routes = [
     },
     {
         path: "authors/:authorId",
-        element: <Author />,
+        element: <AuthorPage />,
     },
 ]
