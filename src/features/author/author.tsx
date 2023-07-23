@@ -1,14 +1,14 @@
 import { useEffect } from "react"
+import { useParams } from "react-router-dom"
 import { Loader, Text } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchAuthorAsync, authorStateSelector } from "../author/authorSlice"
 
 import { AuthorInfo } from "./authorInfo"
 
-type Params = {
-  authorId: string
-}
-export const Author = ({ authorId }: Params) => {
+export const Author = () => {
+  let { authorId } = useParams()
+
   const { author, status } = useAppSelector(authorStateSelector)
   const dispatch = useAppDispatch()
 

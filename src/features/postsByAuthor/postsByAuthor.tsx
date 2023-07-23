@@ -1,4 +1,6 @@
 import { useEffect } from "react"
+import { useParams } from "react-router-dom"
+
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { postsByAuthorStateSelector } from "./postsByAuthorSlice"
 import { fetchPostsByAuthorAsync } from "./postsByAuthorSlice"
@@ -6,12 +8,11 @@ import { Post } from "../../components/post"
 import { Group, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
 
-type Params = {
-  authorId: string
-}
-export const PostsByAuthor = ({ authorId }: Params) => {
+export const PostsByAuthor = () => {
   const { postsByAuthor, status } = useAppSelector(postsByAuthorStateSelector)
   const dispatch = useAppDispatch()
+
+  let { authorId } = useParams()
 
   useEffect(() => {
     if (status === "idle" && authorId) {
