@@ -11,19 +11,19 @@ export const Post = ({ post }: Props) => {
   const navigate = useNavigate()
   const { message, author, posted } = post
 
-  const handleClick = () => {
+  const handleAuthorClick = () => {
     navigate(`/authors/${author.id}`)
   }
 
   return (
-    <Card withBorder radius="md" p="xs" onClick={handleClick}>
+    <Card withBorder radius="md" p="xs">
       <Group noWrap spacing="sm">
         <div>
           <Text mt="xs" mb="md" align="left">
             {message}
           </Text>
           <Group noWrap spacing="xs">
-            <Group spacing="sm" noWrap>
+            <Group spacing="sm" noWrap onClick={handleAuthorClick}>
               <Avatar size="sm" src={author.image} />
               <Text size="sm">{`${author.firstName} ${author.lastName}`}</Text>
             </Group>
