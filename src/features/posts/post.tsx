@@ -1,4 +1,5 @@
 import { Card, Group, Text, Avatar } from "@mantine/core"
+import { useNavigate } from "react-router-dom"
 import { PostContents } from "./types"
 
 type Props = {
@@ -7,10 +8,15 @@ type Props = {
 }
 
 export const Post = ({ post }: Props) => {
+  const navigate = useNavigate()
   const { message, author, posted } = post
 
+  const handleClick = () => {
+    navigate(`/authors/${author.id}`)
+  }
+
   return (
-    <Card withBorder radius="md" p="xs">
+    <Card withBorder radius="md" p="xs" onClick={handleClick}>
       <Group noWrap spacing="sm">
         <div>
           <Text mt="xs" mb="md" align="left">
