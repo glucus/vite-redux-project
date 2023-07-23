@@ -3,6 +3,7 @@ import { Loader, Text } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchAuthorAsync, authorStateSelector } from "../author/authorSlice"
 import { useEffect } from "react"
+import { AuthorInfo } from "./authorInfo"
 
 export const Author = () => {
   let { authorId } = useParams()
@@ -27,7 +28,7 @@ export const Author = () => {
     )
   }
   if (status === "success" && author) {
-    return <div>{author.firstName}</div>
+    return <AuthorInfo author={author} />
   }
   return null
 }
