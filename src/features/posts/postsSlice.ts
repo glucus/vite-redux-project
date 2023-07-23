@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
 import { fetchPosts } from "./postsAPI"
-import { PostContents } from "./helpers/types"
+import { PostContents } from "./types"
 
 export interface PostsState {
   posts: [] | PostContents[]

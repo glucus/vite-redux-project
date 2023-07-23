@@ -1,4 +1,4 @@
-import { Author } from "../features/author/types"
+import { Author } from "./types"
 
 export type Authors = Record<string, Author>
 
