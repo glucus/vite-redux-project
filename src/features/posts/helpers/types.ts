@@ -1,17 +1,8 @@
-export type Author = {
-    id: string
-    image: string
-    age: number
-    firstName: string
-    lastName: string
-    email: string
-    about: string
-    registered: string
-}
+import { Author } from "../../author/types"
 
 export type PostContents = {
-    id: string
-    author: Author
-    message: string
-    posted: string
+  id: string
+  author: Author
+  message: string
+  posted: string
 }
