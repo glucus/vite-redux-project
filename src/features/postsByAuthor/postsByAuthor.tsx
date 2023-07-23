@@ -1,15 +1,15 @@
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { postsByAuthorStateSelector } from "./postsByAuthorSlice"
 import { fetchPostsByAuthorAsync } from "./postsByAuthorSlice"
 import { Post } from "../../components/post"
-import { Loader } from "@mantine/core"
+import { Group, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
 
-export const PostsByAuthor = () => {
-  let { authorId } = useParams()
-
+type Params = {
+  authorId: string
+}
+export const PostsByAuthor = ({ authorId }: Params) => {
   const { postsByAuthor, status } = useAppSelector(postsByAuthorStateSelector)
   const dispatch = useAppDispatch()
 
@@ -17,7 +17,7 @@ export const PostsByAuthor = () => {
     if (status === "idle" && authorId) {
       dispatch(fetchPostsByAuthorAsync({ authorId }))
     }
-  }, [postsByAuthor, authorId, dispatch, fetchPostsByAuthorAsync])
+  }, [authorId, dispatch, fetchPostsByAuthorAsync])
 
   if (status === "loading") {
     return <Loader />
@@ -31,11 +31,16 @@ export const PostsByAuthor = () => {
   }
   if (status === "success" && postsByAuthor?.length > 0) {
     return (
-      <div>
-        {postsByAuthor.map((post) => (
-          <Post post={post} key={post.id} />
-        ))}
-      </div>
+      <>
+        <Group>
+          <Title order={4}>Posts by author</Title>
+          <Group>
+            {postsByAuthor.map((post) => (
+              <Post post={post} key={post.id} />
+            ))}
+          </Group>
+        </Group>
+      </>
     )
   }
   if (status === "success" && !postsByAuthor) {

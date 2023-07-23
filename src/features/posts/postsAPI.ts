@@ -1,7 +1,7 @@
 // A mock function to mimic making an async request for data
 import { PostContents } from "./types"
 import { AddPostFormState } from "../addPost/addPostForm"
-import { POSTS } from "./mocks"
+import { POSTS} from "./mocks";
 
 export const fetchPosts = () => {
   return new Promise<{ data: PostContents[] | [] }>((resolve) =>
