@@ -1,12 +1,11 @@
-import { useParams } from "react-router-dom"
 import { Author } from "../features/author/author"
+import { PostsByAuthor } from "../features/postsByAuthor/postsByAuthor"
 
 export const AuthorPage = () => {
-  let { authorId } = useParams()
-
   return (
     <>
-      <Author authorId={authorId} />
+      <Author />
+      <PostsByAuthor />
     </>
   )
 }
