@@ -3,12 +3,12 @@ import { RootState } from "../../app/store"
 import { fetchAuthor, FetchAuthorParams } from "./authorAPI"
 import { Author } from "./types"
 
-export interface PostsState {
+export interface State {
   author: null | Author
   status: "idle" | "loading" | "failed" | "success"
 }
 
-const initialState: PostsState = {
+const initialState: State = {
   author: null,
   status: "idle",
 }

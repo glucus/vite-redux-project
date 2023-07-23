@@ -1,6 +1,6 @@
 import { Card, Group, Text, Avatar } from "@mantine/core"
 import { useNavigate } from "react-router-dom"
-import { PostContents } from "./types"
+import { PostContents } from "../features/posts/types"
 
 type Props = {
   post: PostContents

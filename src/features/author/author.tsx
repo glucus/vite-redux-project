@@ -28,7 +28,11 @@ export const Author = () => {
     )
   }
   if (status === "success" && author) {
-    return <AuthorInfo author={author} />
+    return (
+      <>
+        <AuthorInfo author={author} />
+      </>
+    )
   }
   return null
 }

@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { postsStateSelector } from "../posts/postsSlice"
 import { fetchPostsAsync } from "../posts/postsSlice"
 import { useEffect } from "react"
-import { Post } from "./post"
+import { Post } from "../../components/post"
 import { Loader } from "@mantine/core"
 import { Text } from "@mantine/core"
 
