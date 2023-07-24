@@ -48,7 +48,7 @@ export const postsSlice = createSlice({
       })
       .addCase(fetchPostsAsync.fulfilled, (state, action) => {
         state.status = "idle"
-        state.posts = [...state.posts, ...action.payload]
+        state.posts = action.payload
       })
       .addCase(fetchPostsAsync.rejected, (state) => {
         state.status = "failed"
