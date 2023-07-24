@@ -13,9 +13,6 @@ export const PostsByAuthor = () => {
   const dispatch = useAppDispatch()
 
   let { authorId } = useParams()
-  // console.log('authorId', authorId);
-
-  // TODO: reset state after change url params
 
   useEffect(() => {
     if (status === "idle" && authorId) {

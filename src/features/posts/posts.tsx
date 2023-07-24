@@ -11,7 +11,6 @@ export const Posts = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    // TODO: можно добавить еще условия
     if (status === "idle") {
       dispatch(fetchPostsAsync())
     }
