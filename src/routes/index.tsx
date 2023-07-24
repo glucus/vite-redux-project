@@ -1,15 +1,15 @@
-import React from "react";
+import React from "react"
 
-import App from '../App';
-import { AuthorPage } from "./author"
+import { MainPage } from "./mainPage"
+import { AuthorPage } from "./authorPage"
 
 export const routes = [
-    {
-        path: "/",
-        element: <App />,
-    },
-    {
-        path: "authors/:authorId",
-        element: <AuthorPage />,
-    },
+  {
+    path: "/",
+    element: <MainPage />,
+  },
+  {
+    path: "authors/:authorId",
+    element: <AuthorPage />,
+  },
 ]
