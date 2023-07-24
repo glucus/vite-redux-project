@@ -33,7 +33,7 @@ export const createPost = (post: AddPostFormState) => {
   const postContent = addPostInfo(post)
 
   return new Promise<{ data: PostContents }>((resolve) => {
-    console.log(`creating post for ${postContent}`)
+    console.log(`creating post`)
     setTimeout(() => resolve({ data: postContent }), 500)
   })
 }

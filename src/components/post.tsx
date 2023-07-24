@@ -1,7 +1,7 @@
 import { Card, Group, Text, Avatar } from "@mantine/core"
 import { useNavigate } from "react-router-dom"
 import { PostContents } from "../features/posts/types"
-
+import moment from "moment"
 type Props = {
   post: PostContents
   key: string
@@ -28,7 +28,7 @@ export const Post = ({ post }: Props) => {
               <Text size="sm">{`${author.firstName} ${author.lastName}`}</Text>
             </Group>
             <Text size="sm" color="dimmed">
-              {posted}
+              {moment(posted).format("MMMM Do YYYY, h:mm a")}
             </Text>
           </Group>
         </div>
