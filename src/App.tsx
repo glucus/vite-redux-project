@@ -1,13 +1,13 @@
-import "./App.css"
+import { Container } from "@mantine/core"
 import { Posts } from "./features/posts/posts"
 import { AddPostModal } from "./features/addPost/addPostModal"
 
 function App() {
   return (
-    <div className="App">
+    <Container>
       <AddPostModal />
       <Posts />
-    </div>
+    </Container>
   )
 }
 
