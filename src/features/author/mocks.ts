@@ -90,16 +90,17 @@ export const AUTHORS: Authors = {
     about:
       "Irure ad ad pariatur eiusmod esse sit. Sit dolore exercitation ex ullamco est velit sint quis mollit est Lorem fugiat. Anim non Lorem non esse ullamco. Id culpa reprehenderit exercitation non dolore officia. Nisi laboris incididunt cupidatat magna aliqua non dolor fugiat nostrud aliqua esse irure. Amet eiusmod incididunt enim nostrud ea nostrud tempor duis Lorem duis tempor ex culpa. Magna ipsum cillum eiusmod non incididunt ea magna cillum amet velit laborum.\r\n",
     registered: "2019-11-13T07:50:37 -01:00",
-  },
-  NguyenJoseph: {
-    id: "NguyenJoseph",
-    image: "http://placehold.it/32x32",
-    age: 32,
-    firstName: "Nguyen",
-    lastName: "Joseph",
-    email: "nguyenjoseph@halap.com",
-    about:
-      "Commodo quis adipisicing velit anim irure amet. Cupidatat aliqua Lorem consectetur aliqua nulla velit est ut elit aliquip esse cupidatat. Sunt duis laborum reprehenderit excepteur nisi excepteur dolor labore aute proident incididunt officia nostrud non.\r\n",
-    registered: "2019-12-03T08:50:44 -01:00",
-  },
+  }
+}
+
+export const NEW_POST_AUTHOR = {
+  id: "NguyenJoseph",
+  image: "http://placehold.it/32x32",
+  age: 32,
+  firstName: "Nguyen",
+  lastName: "Joseph",
+  email: "nguyenjoseph@halap.com",
+  about:
+    "Commodo quis adipisicing velit anim irure amet. Cupidatat aliqua Lorem consectetur aliqua nulla velit est ut elit aliquip esse cupidatat. Sunt duis laborum reprehenderit excepteur nisi excepteur dolor labore aute proident incididunt officia nostrud non.\r\n",
+  registered: "2019-12-03T08:50:44 -01:00",
 }

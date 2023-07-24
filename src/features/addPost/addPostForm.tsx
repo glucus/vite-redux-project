@@ -1,10 +1,10 @@
 import { useForm, hasLength } from "@mantine/form"
-import { TextInput, Textarea, Box, Group, Button } from "@mantine/core"
+import { Textarea, Box, Group, Button } from "@mantine/core"
 import { useCallback } from "react"
-// import { createPost } from "../posts/postsAPI"
+import { useAppDispatch } from "../../app/hooks"
+import { createPostAsync } from "../posts/postsSlice"
 
 export type AddPostFormState = {
-  name: string
   message: string
 }
 
@@ -13,13 +13,13 @@ type Props = {
 }
 
 export const AddPostForm = ({ close }: Props) => {
+  const dispatch = useAppDispatch()
+
   const form = useForm({
     initialValues: {
-      name: "",
       message: "",
     },
     validate: {
-      name: hasLength({ min: 1, max: 20 }, "Name must be 1-20 characters long"),
       message: hasLength(
         { min: 1, max: 200 },
         "Message must be 1-200 characters long",
@@ -27,14 +27,15 @@ export const AddPostForm = ({ close }: Props) => {
     },
   })
 
-  // TODO: вызывать thunk с mockApi, после чего в случае успеха закрывать модалку (форма ресетится при закрытии)
-  const handleSubmit = useCallback((data: AddPostFormState) => {
-    // createPost(data).then(() => {
-    console.log("added post ", data)
-    form.reset()
-    close()
-    // })
-  }, [])
+  const handleSubmit = useCallback(
+    (data: AddPostFormState) => {
+      dispatch(createPostAsync(data)).then(() => {
+        form.reset()
+        close()
+      })
+    },
+    [close, dispatch, form, createPostAsync],
+  )
 
   return (
     <Box
@@ -43,12 +44,6 @@ export const AddPostForm = ({ close }: Props) => {
       mx="auto"
       onSubmit={form.onSubmit(handleSubmit)}
     >
-      <TextInput
-        label="Name"
-        placeholder="Name"
-        withAsterisk
-        {...form.getInputProps("name")}
-      />
       <Textarea
         placeholder="Your message (200 symbols max)"
         label="Message"

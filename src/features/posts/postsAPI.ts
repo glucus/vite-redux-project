@@ -2,6 +2,8 @@
 import { PostContents } from "./types"
 import { AddPostFormState } from "../addPost/addPostForm"
 import { POSTS } from "./mocks"
+import { NEW_POST_AUTHOR } from "../author/mocks"
+import { uniqueId } from "lodash"
 
 export const fetchPosts = () => {
   return new Promise<{ data: PostContents[] | [] }>((resolve) => {
@@ -10,9 +12,28 @@ export const fetchPosts = () => {
   })
 }
 
+const addPostInfo = (data: AddPostFormState) => {
+  // user registration / login, etc
+  const author = NEW_POST_AUTHOR
+
+  const date = new Date()
+  const isoString = date.toISOString()
+
+  const id = uniqueId(author.firstName + author.lastName)
+
+  return {
+    ...data,
+    author,
+    id,
+    posted: isoString,
+  }
+}
+
 export const createPost = (post: AddPostFormState) => {
-  // TODO: add api response type
-  return new Promise<{ data: AddPostFormState }>((resolve) =>
-    setTimeout(() => resolve({ data: post }), 500),
-  )
+  const postContent = addPostInfo(post)
+
+  return new Promise<{ data: PostContents }>((resolve) => {
+    console.log(`creating post for ${postContent}`)
+    setTimeout(() => resolve({ data: postContent }), 500)
+  })
 }

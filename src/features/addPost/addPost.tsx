@@ -3,7 +3,6 @@ import { Modal, Button, Group } from "@mantine/core"
 import { AddPostForm } from "./addPostForm"
 
 export const AddPost = () => {
-    // TODO: перенести управление модалкой на уровень redux?
   const [opened, { open, close }] = useDisclosure(false)
 
   return (
