@@ -15,7 +15,7 @@ export const Posts = () => {
     if (status === "idle") {
       dispatch(fetchPostsAsync())
     }
-  }, [posts, dispatch, fetchPostsAsync])
+  }, [dispatch, fetchPostsAsync])
 
   if (status === "loading") {
     return <Loader />
@@ -27,19 +27,12 @@ export const Posts = () => {
       </div>
     )
   }
-  if (status === "success" && posts?.length > 0) {
+  if (status === "idle" && posts?.length > 0) {
     return (
       <div>
         {posts.map((post) => (
           <Post post={post} key={post.id} />
         ))}
-      </div>
-    )
-  }
-  if (status === "success" && !posts) {
-    return (
-      <div>
-        <Text>No posts found</Text>
       </div>
     )
   }

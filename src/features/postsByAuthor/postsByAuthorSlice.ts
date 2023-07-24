@@ -8,7 +8,7 @@ import { PostContents} from "../posts/types";
 
 export interface State {
   postsByAuthor: [] | PostContents[]
-  status: "idle" | "loading" | "failed" | "success"
+  status: "idle" | "loading" | "failed"
 }
 
 const initialState: State = {
@@ -44,8 +44,8 @@ export const postsByAuthorSlice = createSlice({
         state.status = "loading"
       })
       .addCase(fetchPostsByAuthorAsync.fulfilled, (state, action) => {
-        state.status = "success"
-        state.postsByAuthor = [...state.postsByAuthor, ...action.payload]
+        state.status = "idle"
+        state.postsByAuthor = action.payload
       })
       .addCase(fetchPostsByAuthorAsync.rejected, (state) => {
         state.status = "failed"

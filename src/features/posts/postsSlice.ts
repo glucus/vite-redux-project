@@ -5,7 +5,7 @@ import { PostContents } from "./types"
 
 export interface State {
   posts: [] | PostContents[]
-  status: "idle" | "loading" | "failed" | "success"
+  status: "idle" | "loading" | "failed"
 }
 
 const initialState: State = {
@@ -47,7 +47,7 @@ export const postsSlice = createSlice({
         state.status = "loading"
       })
       .addCase(fetchPostsAsync.fulfilled, (state, action) => {
-        state.status = "success"
+        state.status = "idle"
         state.posts = [...state.posts, ...action.payload]
       })
       .addCase(fetchPostsAsync.rejected, (state) => {

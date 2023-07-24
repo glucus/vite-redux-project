@@ -8,15 +8,17 @@ import { AuthorInfo } from "./authorInfo"
 
 export const Author = () => {
   let { authorId } = useParams()
+  // console.log('authorId', authorId);
 
   const { author, status } = useAppSelector(authorStateSelector)
   const dispatch = useAppDispatch()
 
+  // TODO: reset state after change url params
   useEffect(() => {
     if (status === "idle" && authorId) {
       dispatch(fetchAuthorAsync({ authorId }))
     }
-  }, [authorId, dispatch, fetchAuthorAsync])
+  }, [ authorId, dispatch, fetchAuthorAsync])
 
   if (status === "loading") {
     return <Loader />
@@ -28,7 +30,7 @@ export const Author = () => {
       </div>
     )
   }
-  if (status === "success" && author) {
+  if (status === "idle" && author) {
     return (
       <>
         <AuthorInfo author={author} />

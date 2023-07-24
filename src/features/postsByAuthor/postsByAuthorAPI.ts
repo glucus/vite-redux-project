@@ -12,6 +12,7 @@ export const fetchPostsByAuthor = ({ authorId }: FetchPostsByAuthorParams) => {
   const postsByAuthor = findPostsByAuthor(authorId)
 
   return new Promise<{ data: PostContents[] | [] }>((resolve) => {
+    console.log(`fetching posts of author ${authorId}`)
     setTimeout(() => resolve({ data: postsByAuthor }), 500)
   })
 }

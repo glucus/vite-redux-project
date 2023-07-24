@@ -13,6 +13,9 @@ export const PostsByAuthor = () => {
   const dispatch = useAppDispatch()
 
   let { authorId } = useParams()
+  // console.log('authorId', authorId);
+
+  // TODO: reset state after change url params
 
   useEffect(() => {
     if (status === "idle" && authorId) {
@@ -30,7 +33,7 @@ export const PostsByAuthor = () => {
       </div>
     )
   }
-  if (status === "success" && postsByAuthor?.length > 0) {
+  if (status === "idle" && postsByAuthor?.length > 0) {
     return (
       <>
         <Group>

@@ -11,6 +11,7 @@ export const fetchAuthor = ({ authorId }: FetchAuthorParams) => {
 
   // TODO: Add response type
   return new Promise<{ data: Author | null }>((resolve) => {
+    console.log(`fetching data for author ${authorId}`)
     setTimeout(() => resolve({ data: author }), 500)
   })
 }
