@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { postsByAuthorStateSelector } from "./postsByAuthorSlice"
 import { fetchPostsByAuthorAsync } from "./postsByAuthorSlice"
 import { Post } from "../../components/post"
-import { Group, Center, Loader, Title } from "@mantine/core"
+import { Stack, Center, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
 
 export const PostsByAuthor = () => {
@@ -37,14 +37,12 @@ export const PostsByAuthor = () => {
   if (status === "idle" && postsByAuthor?.length > 0) {
     return (
       <>
-        <Group>
+        <Stack>
           <Title order={4}>Posts by author</Title>
-          <Group>
             {postsByAuthor.map((post) => (
               <Post post={post} key={post.id} />
             ))}
-          </Group>
-        </Group>
+        </Stack>
       </>
     )
   }
