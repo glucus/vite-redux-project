@@ -47,12 +47,5 @@ export const PostsByAuthor = () => {
       </>
     )
   }
-  if (status === "success" && !postsByAuthor) {
-    return (
-      <div>
-        <Text>No posts by author found</Text>
-      </div>
-    )
-  }
   return null
 }

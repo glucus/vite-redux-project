@@ -18,7 +18,7 @@ export const Author = () => {
     if (status === "idle" && authorId) {
       dispatch(fetchAuthorAsync({ authorId }))
     }
-  }, [ authorId, dispatch, fetchAuthorAsync])
+  }, [authorId, dispatch, fetchAuthorAsync])
 
   if (status === "loading") {
     return <Loader />
