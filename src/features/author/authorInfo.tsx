@@ -8,7 +8,7 @@ export const AuthorInfo = ({ author }: Props) => {
   const { image, firstName, lastName, about } = author
 
   return (
-    <Card withBorder radius="md" p="xs">
+    <Card radius="md" p="xs">
       <Group spacing="sm">
         <div>
           <Group spacing="xs">
