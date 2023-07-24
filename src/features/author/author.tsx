@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { Loader, Text } from "@mantine/core"
+import { Group, Loader, Center, Text } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchAuthorAsync, authorStateSelector } from "../author/authorSlice"
 import { AuthorInfo } from "./authorInfo"
@@ -18,20 +18,24 @@ export const Author = () => {
   }, [authorId, dispatch, fetchAuthorAsync])
 
   if (status === "loading") {
-    return <Loader />
+    return (
+      <Center>
+        <Loader />
+      </Center>
+    )
   }
   if (status === "failed") {
     return (
-      <div>
+      <Group>
         <Text>Failed loading content</Text>
-      </div>
+      </Group>
     )
   }
   if (status === "idle" && author) {
     return (
-      <>
+      <Group>
         <AuthorInfo author={author} />
-      </>
+      </Group>
     )
   }
   return null

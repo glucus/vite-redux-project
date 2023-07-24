@@ -3,7 +3,7 @@ import { postsStateSelector } from "../posts/postsSlice"
 import { fetchPostsAsync } from "../posts/postsSlice"
 import { useEffect } from "react"
 import { Post } from "../../components/post"
-import { Loader } from "@mantine/core"
+import { Group, Center, Loader } from "@mantine/core"
 import { Text } from "@mantine/core"
 
 export const Posts = () => {
@@ -17,7 +17,11 @@ export const Posts = () => {
   }, [dispatch, fetchPostsAsync])
 
   if (status === "loading") {
-    return <Loader />
+    return (
+      <Center>
+        <Loader />
+      </Center>
+    )
   }
   if (status === "failed") {
     return (
@@ -28,11 +32,11 @@ export const Posts = () => {
   }
   if (status === "idle" && posts?.length > 0) {
     return (
-      <div>
+      <Group>
         {posts.map((post) => (
           <Post post={post} key={post.id} />
         ))}
-      </div>
+      </Group>
     )
   }
   return null

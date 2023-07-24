@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { postsByAuthorStateSelector } from "./postsByAuthorSlice"
 import { fetchPostsByAuthorAsync } from "./postsByAuthorSlice"
 import { Post } from "../../components/post"
-import { Group, Loader, Title } from "@mantine/core"
+import { Group, Center, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
 
 export const PostsByAuthor = () => {
@@ -21,7 +21,11 @@ export const PostsByAuthor = () => {
   }, [authorId, dispatch, fetchPostsByAuthorAsync])
 
   if (status === "loading") {
-    return <Loader />
+    return (
+      <Center>
+        <Loader size="sm" variant="dots" />
+      </Center>
+    )
   }
   if (status === "failed") {
     return (
