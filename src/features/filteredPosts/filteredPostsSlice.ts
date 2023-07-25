@@ -16,16 +16,10 @@ const initialState: State = {
   status: "idle",
 }
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
-
 export const fetchFilteredPostsAsync = createAsyncThunk(
   "posts/fetchFilteredPosts",
-  async ({ authorId }: FetchFilteredPostsParams) => {
-    const response = await fetchFilteredPosts({ authorId })
+  async (searchParams: FetchFilteredPostsParams) => {
+    const response = await fetchFilteredPosts(searchParams)
     // The value we return becomes the `fulfilled` action payload
     return response.data
   },
@@ -55,3 +49,5 @@ export const filteredPostsSlice = createSlice({
 
 export const filteredPostsStateSelector = (state: RootState) =>
   state.filteredPosts
+
+export default filteredPostsSlice.reducer

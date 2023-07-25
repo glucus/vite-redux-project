@@ -7,18 +7,19 @@ import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
 import { Stack, Center, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
+import { useSearchParams } from "react-router-dom"
 
 export const FilteredPosts = () => {
+  let [searchParams] = useSearchParams()
+
   const { filteredPosts, status } = useAppSelector(filteredPostsStateSelector)
   const dispatch = useAppDispatch()
 
-  let { authorId } = useParams()
-
   useEffect(() => {
-    if (status === "idle" && authorId) {
-      dispatch(fetchFilteredPostsAsync({ authorId }))
+    if (status === "idle" && searchParams) {
+      dispatch(fetchFilteredPostsAsync(searchParams))
     }
-  }, [authorId, dispatch, fetchFilteredPostsAsync])
+  }, [searchParams, dispatch, fetchFilteredPostsAsync])
 
   if (status === "loading") {
     return (
@@ -38,7 +39,6 @@ export const FilteredPosts = () => {
     return (
       <>
         <Stack>
-          <Title order={4}>Posts by author</Title>
           {filteredPosts.map((post) => (
             <Post post={post} key={post.id} />
           ))}

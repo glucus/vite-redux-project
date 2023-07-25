@@ -2,17 +2,21 @@
 import { PostContents } from "../posts/types"
 import { POSTS } from "../posts/mocks"
 
-export type FetchFilteredPostsParams = { authorId: string }
-
-const findFilteredPosts = (authorId: string) => {
-  return POSTS.filter((post) => post.author.id === authorId)
+export type FetchFilteredPostsParams = {
+  filterBy: string
+  query: string
 }
 
-export const fetchFilteredPosts = ({ authorId }: FetchFilteredPostsParams) => {
-  const filteredPosts = findFilteredPosts(authorId)
+const findFilteredPosts = (params: FetchFilteredPostsParams) => {
+  // TODO: add search by author
+  return POSTS.filter((post) => /params.query/i.test(post.message));
+}
+
+export const fetchFilteredPosts = (params: FetchFilteredPostsParams) => {
+  const filteredPosts = findFilteredPosts(params)
 
   return new Promise<{ data: PostContents[] | [] }>((resolve) => {
-    console.log(`fetching posts of author ${authorId}`)
+    console.log(`fetching posts filtered by ${params.filterBy}`)
     setTimeout(() => resolve({ data: filteredPosts }), 500)
   })
 }
