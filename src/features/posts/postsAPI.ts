@@ -1,6 +1,6 @@
 // A mock function to mimic making an async request for data
 import { PostContents } from "./types"
-import { AddPostFormState } from "../addPost/addPostForm"
+import { AddPostFormState } from "../../components/addPost/addPostForm"
 import { POSTS } from "./mocks"
 import { NEW_POST_AUTHOR } from "../author/mocks"
 import { uniqueId } from "lodash"

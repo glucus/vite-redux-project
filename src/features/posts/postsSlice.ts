@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
 import { fetchPosts, createPost } from "./postsAPI"
 import { PostContents } from "./types"
-import { AddPostFormState } from "../addPost/addPostForm"
+import { AddPostFormState } from "../../components/addPost/addPostForm"
 
 export interface State {
   posts: [] | PostContents[]

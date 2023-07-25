@@ -13,7 +13,7 @@ export const HomeButton = () => {
       gradient={{ from: "teal", to: "blue", deg: 60 }}
       onClick={handleClick}
     >
-      Main page
+      Home
     </Button>
   )
 }

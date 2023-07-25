@@ -2,7 +2,7 @@ import { useForm, hasLength } from "@mantine/form"
 import { Textarea, Box, Group, Button } from "@mantine/core"
 import { useCallback } from "react"
 import { useAppDispatch } from "../../app/hooks"
-import { createPostAsync } from "../posts/postsSlice"
+import { createPostAsync } from "../../features/posts/postsSlice"
 
 export type AddPostFormState = {
   message: string
