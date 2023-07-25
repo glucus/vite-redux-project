@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
 import { fetchPosts, createPost } from "./postsAPI"
 import { PostContents } from "./types"
@@ -63,7 +63,7 @@ export const postsSlice = createSlice({
       })
       .addCase(createPostAsync.fulfilled, (state, action) => {
         state.createPostStatus = "idle"
-        state.posts = [...state.posts, action.payload]
+        state.posts = [action.payload, ...state.posts]
       })
       .addCase(createPostAsync.rejected, (state) => {
         state.createPostStatus = "failed"
