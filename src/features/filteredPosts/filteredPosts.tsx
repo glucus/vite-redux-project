@@ -14,13 +14,14 @@ export const FilteredPosts = () => {
   const { filteredPosts, status } = useAppSelector(filteredPostsStateSelector)
   const dispatch = useAppDispatch()
 
+  const filterBy = searchParams?.get("filterBy")
+  const query = searchParams?.get("query")
+
   useEffect(() => {
-    if (status === "idle" && searchParams) {
-      const filterBy = searchParams.get("filterBy")
-      const query = searchParams.get("query")
+    if (status === "idle" && filterBy && query) {
       dispatch(fetchFilteredPostsAsync({ filterBy, query }))
     }
-  }, [searchParams, dispatch, fetchFilteredPostsAsync])
+  }, [filterBy, query, dispatch, fetchFilteredPostsAsync])
 
   if (status === "loading") {
     return (
