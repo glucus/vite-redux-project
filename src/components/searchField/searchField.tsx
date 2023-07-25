@@ -20,12 +20,6 @@ export const SearchField = () => {
     setValue(query)
   }
 
-  const handleSearchClick = () => {
-    if (value) {
-      navigateToFilteredPage()
-    }
-  }
-
   const handleCloseClick = () => {
     setValue("")
   }
@@ -52,16 +46,6 @@ export const SearchField = () => {
         onChange={(e) => handleChange(e.target.value)}
         onKeyUp={(e) => handleKeyUp(e.key)}
       />
-      {value && (
-        <ActionIcon
-          color="blue"
-          variant="light"
-          size="lg"
-          onClick={handleSearchClick}
-        >
-          <Search size="1rem" />
-        </ActionIcon>
-      )}
     </Group>
   )
 }
