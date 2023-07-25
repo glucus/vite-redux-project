@@ -2,23 +2,23 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { postsByAuthorStateSelector } from "./postsByAuthorSlice"
-import { fetchPostsByAuthorAsync } from "./postsByAuthorSlice"
+import { filteredPostsStateSelector } from "./filteredPostsSlice"
+import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
 import { Stack, Center, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
 
-export const PostsByAuthor = () => {
-  const { postsByAuthor, status } = useAppSelector(postsByAuthorStateSelector)
+export const FilteredPosts = () => {
+  const { filteredPosts, status } = useAppSelector(filteredPostsStateSelector)
   const dispatch = useAppDispatch()
 
   let { authorId } = useParams()
 
   useEffect(() => {
     if (status === "idle" && authorId) {
-      dispatch(fetchPostsByAuthorAsync({ authorId }))
+      dispatch(fetchFilteredPostsAsync({ authorId }))
     }
-  }, [authorId, dispatch, fetchPostsByAuthorAsync])
+  }, [authorId, dispatch, fetchFilteredPostsAsync])
 
   if (status === "loading") {
     return (
@@ -34,12 +34,12 @@ export const PostsByAuthor = () => {
       </div>
     )
   }
-  if (status === "idle" && postsByAuthor?.length > 0) {
+  if (status === "idle" && filteredPosts?.length > 0) {
     return (
       <>
         <Stack>
           <Title order={4}>Posts by author</Title>
-          {postsByAuthor.map((post) => (
+          {filteredPosts.map((post) => (
             <Post post={post} key={post.id} />
           ))}
         </Stack>
