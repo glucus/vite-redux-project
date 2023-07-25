@@ -13,7 +13,7 @@ export const POSTS = [
       registered: "2022-11-04T01:41:56Z",
     },
     message:
-      "Nostrud laboris ea magna exercitation. Aute fugiat elit cupidatat consequat exercitation. Ut velit anim aute ut nostrud Lorem commodo veniam id tempor. Fugiat eu voluptate sit est reprehenderit ut in reprehenderit qui et sunt.\r\n",
+      "Ut velit anim aute ut nostrud Lorem commodo veniam id tempor. Fugiat eu voluptate sit est reprehenderit ut in reprehenderit qui et sunt.\r\n",
     posted: "2014-09-06T12:48:21Z",
   },
   {
@@ -30,7 +30,7 @@ export const POSTS = [
       registered: "2023-03-27T02:30:58Z",
     },
     message:
-      "Dolor elit adipisicing veniam esse labore laborum non esse. Minim quis laborum do magna eiusmod nulla consequat. Ex et duis non mollit non et aute reprehenderit id aute voluptate consectetur. Occaecat sit nostrud consequat eu cillum. Proident velit cillum excepteur laboris nulla nulla ullamco excepteur duis amet est irure. Amet enim commodo enim tempor nulla.\r\n",
+      "Dolor elit adipisicing veniam esse labore laborum non esse. Minim quis laborum do magna eiusmod nulla consequat. Ex et duis non mollit non et aute reprehenderit id aute voluptate consectetur. Occaecat sit nostrud consequat eu cillum. \r\n",
     posted: "2021-03-11T07:27:53Z",
   },
   {
@@ -47,7 +47,7 @@ export const POSTS = [
       registered: "2021-07-24T12:01:46Z",
     },
     message:
-      "Cillum aute excepteur eiusmod nostrud amet ipsum enim id et. Mollit dolor amet mollit aute duis nisi laborum tempor sint. Non laborum ipsum occaecat proident quis consectetur. Proident excepteur amet eiusmod magna fugiat labore nulla ad duis. Velit mollit incididunt velit fugiat exercitation excepteur pariatur. Aute excepteur cillum mollit reprehenderit consequat tempor. Laboris aliquip mollit proident est quis laborum reprehenderit reprehenderit enim.\r\n",
+      "Cillum aute excepteur eiusmod nostrud amet ipsum enim id et. Proident excepteur amet eiusmod magna fugiat labore nulla ad duis. \r\n",
     posted: "2019-07-24T09:47:49Z",
   },
   {
@@ -64,7 +64,7 @@ export const POSTS = [
       registered: "2016-04-15T12:30:51Z",
     },
     message:
-      "Irure proident eu proident anim et occaecat ipsum aute aliqua cillum sint est tempor qui. Culpa eu laborum occaecat irure aliquip magna commodo consequat cupidatat velit occaecat minim minim do. Id et commodo incididunt excepteur velit quis pariatur eiusmod aute est laboris. Adipisicing tempor occaecat non deserunt sit veniam adipisicing. Laborum ullamco est aliqua exercitation incididunt exercitation aliqua id velit ea nisi. Ad dolor ex ullamco non consequat.\r\n",
+      "Irure proident eu proident anim et occaecat ipsum aute aliqua cillum sint est tempor qui. Culpa eu laborum occaecat irure aliquip magna commodo consequat.\r\n",
     posted: "2023-03-15T03:12:40Z",
   },
   {
@@ -81,7 +81,7 @@ export const POSTS = [
       registered: "2016-04-15T12:30:51Z",
     },
     message:
-      "Nisi mollit amet in do magna consectetur cillum sunt est voluptate cupidatat. Id fugiat duis consequat ut dolore nulla. Magna voluptate ad dolor qui veniam veniam exercitation adipisicing dolore eu. Sint ex nulla laborum eu aliqua ea esse non in sit consectetur. Et consequat labore anim ex proident est mollit pariatur reprehenderit sint cupidatat.\r\n",
+      "Nisi mollit amet in do magna consectetur cillum sunt est voluptate cupidatat. Et consequat labore anim ex proident est mollit pariatur reprehenderit sint cupidatat.\r\n",
     posted: "2019-10-07T12:58:55Z",
   },
 ]
