@@ -2,6 +2,7 @@ import { useEffect } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { filteredPostsStateSelector } from "./filteredPostsSlice"
+import { postsStateSelector } from "../posts/postsSlice"
 import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
 import { Stack, Center, Loader } from "@mantine/core"
@@ -11,33 +12,43 @@ import { useSearchParams } from "react-router-dom"
 export const FilteredPosts = () => {
   let [searchParams] = useSearchParams()
 
-  const { filteredPosts, status } = useAppSelector(filteredPostsStateSelector)
+  const { filteredPosts, status: filteredPostsStatus } = useAppSelector(
+    filteredPostsStateSelector,
+  )
+  const { posts, status } = useAppSelector(postsStateSelector)
   const dispatch = useAppDispatch()
 
   const filterBy = searchParams?.get("filterBy")
   const query = searchParams?.get("query")
 
   useEffect(() => {
-    if (status === "idle" && filterBy && query) {
-      dispatch(fetchFilteredPostsAsync({ filterBy, query }))
+    if (
+      filteredPostsStatus === "idle" &&
+      filterBy &&
+      query &&
+      status === "idle" &&
+      posts
+    ) {
+      // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
+      dispatch(fetchFilteredPostsAsync({ filterBy, query, posts }))
     }
-  }, [filterBy, query, dispatch, fetchFilteredPostsAsync])
+  }, [filterBy, query, dispatch, fetchFilteredPostsAsync, posts])
 
-  if (status === "loading") {
+  if (filteredPostsStatus === "loading") {
     return (
       <Center>
         <Loader size="sm" variant="dots" />
       </Center>
     )
   }
-  if (status === "failed") {
+  if (filteredPostsStatus === "failed") {
     return (
       <div>
         <Text>Failed loading content</Text>
       </div>
     )
   }
-  if (status === "idle" && filteredPosts?.length > 0) {
+  if (filteredPostsStatus === "idle" && filteredPosts?.length > 0) {
     return (
       <>
         <Stack>

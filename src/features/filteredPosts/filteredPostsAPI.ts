@@ -5,22 +5,32 @@ import { POSTS } from "../posts/mocks"
 export type FetchFilteredPostsParams = {
   filterBy: string
   query: string
+  posts: PostContents[] | []
 }
 
-const findFilteredPosts = ({ filterBy, query }: FetchFilteredPostsParams) => {
+// TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
+const findFilteredPosts = ({
+  filterBy,
+  query,
+  posts,
+}: FetchFilteredPostsParams) => {
   // TODO: add search by author
   // return POSTS.filter((post) => post.message.includes(query))
 
   const regex = new RegExp(query, "i")
 
-  return POSTS.filter((post) => regex.test(post.message))
+  const postsToFilter = posts.length > 0 ? posts : POSTS
+
+  return postsToFilter.filter((post) => regex.test(post.message))
 }
 
 export const fetchFilteredPosts = (params: FetchFilteredPostsParams) => {
   const filteredPosts = findFilteredPosts(params)
 
   return new Promise<{ data: PostContents[] | [] }>((resolve) => {
-    console.log(`fetching posts filtered by ${params.filterBy} for query ${params.query}`)
+    console.log(
+      `fetching posts filtered by ${params.filterBy} for query ${params.query}`,
+    )
     setTimeout(() => resolve({ data: filteredPosts }), 500)
   })
 }
