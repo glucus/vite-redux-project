@@ -1,11 +1,10 @@
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { filteredPostsStateSelector } from "./filteredPostsSlice"
 import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
-import { Stack, Center, Loader, Title } from "@mantine/core"
+import { Stack, Center, Loader } from "@mantine/core"
 import { Text } from "@mantine/core"
 import { useSearchParams } from "react-router-dom"
 
@@ -17,7 +16,9 @@ export const FilteredPosts = () => {
 
   useEffect(() => {
     if (status === "idle" && searchParams) {
-      dispatch(fetchFilteredPostsAsync(searchParams))
+      const filterBy = searchParams.get("filterBy")
+      const query = searchParams.get("query")
+      dispatch(fetchFilteredPostsAsync({ filterBy, query }))
     }
   }, [searchParams, dispatch, fetchFilteredPostsAsync])
 

@@ -7,16 +7,20 @@ export type FetchFilteredPostsParams = {
   query: string
 }
 
-const findFilteredPosts = (params: FetchFilteredPostsParams) => {
+const findFilteredPosts = ({ filterBy, query }: FetchFilteredPostsParams) => {
   // TODO: add search by author
-  return POSTS.filter((post) => /params.query/i.test(post.message));
+  // return POSTS.filter((post) => post.message.includes(query))
+
+  const regex = new RegExp(query, "i")
+
+  return POSTS.filter((post) => regex.test(post.message))
 }
 
 export const fetchFilteredPosts = (params: FetchFilteredPostsParams) => {
   const filteredPosts = findFilteredPosts(params)
 
   return new Promise<{ data: PostContents[] | [] }>((resolve) => {
-    console.log(`fetching posts filtered by ${params.filterBy}`)
+    console.log(`fetching posts filtered by ${params.filterBy} for query ${params.query}`)
     setTimeout(() => resolve({ data: filteredPosts }), 500)
   })
 }

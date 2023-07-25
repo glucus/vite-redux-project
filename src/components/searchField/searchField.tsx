@@ -1,5 +1,5 @@
-import { TextInput, ActionIcon } from "@mantine/core"
-import { Search } from "tabler-icons-react"
+import { TextInput, ActionIcon, Group } from "@mantine/core"
+import { Search, X } from "tabler-icons-react"
 import { useState } from "react"
 
 import { useNavigate, useSearchParams } from "react-router-dom"
@@ -11,35 +11,57 @@ export const SearchField = () => {
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams()
 
+  const navigateToFilteredPage = () => {
+    navigate("/filtered", { replace: true })
+    setSearchParams({ filterBy: filterBy, query: value })
+  }
+
   const handleChange = (query: string) => {
     setValue(query)
   }
 
-  const handleClick = () => {
+  const handleSearchClick = () => {
     if (value) {
-      navigate("filtered")
-      setSearchParams({ filterBy: filterBy, query: value })
+      navigateToFilteredPage()
     }
+  }
+
+  const handleCloseClick = () => {
+    setValue("")
   }
 
   const handleKeyUp = (key: string) => {
     if ((key === "Enter" || key === "Return") && value) {
-      navigate("filtered")
-      setSearchParams({ filterBy: filterBy, query: value })
+      navigateToFilteredPage()
     }
   }
 
   return (
-    <TextInput
-      type="search"
-      rightSection={
-        <ActionIcon color="blue" variant="filled" onClick={handleClick}>
+    <Group spacing="sm">
+      <TextInput
+        type="search"
+        icon={<Search size="1rem" />}
+        rightSection={
+          value && (
+            <ActionIcon onClick={handleCloseClick}>
+              <X size="1rem" />
+            </ActionIcon>
+          )
+        }
+        value={value}
+        onChange={(e) => handleChange(e.target.value)}
+        onKeyUp={(e) => handleKeyUp(e.key)}
+      />
+      {value && (
+        <ActionIcon
+          color="blue"
+          variant="light"
+          size="lg"
+          onClick={handleSearchClick}
+        >
           <Search size="1rem" />
         </ActionIcon>
-      }
-      value={value}
-      onChange={(e) => handleChange(e.target.value)}
-      onKeyUp={(e) => handleKeyUp(e.key)}
-    />
+      )}
+    </Group>
   )
 }

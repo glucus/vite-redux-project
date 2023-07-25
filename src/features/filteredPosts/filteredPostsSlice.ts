@@ -18,8 +18,8 @@ const initialState: State = {
 
 export const fetchFilteredPostsAsync = createAsyncThunk(
   "posts/fetchFilteredPosts",
-  async (searchParams: FetchFilteredPostsParams) => {
-    const response = await fetchFilteredPosts(searchParams)
+  async (params: FetchFilteredPostsParams) => {
+    const response = await fetchFilteredPosts(params)
     // The value we return becomes the `fulfilled` action payload
     return response.data
   },
