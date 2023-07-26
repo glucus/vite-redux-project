@@ -46,6 +46,9 @@ export const AddPostForm = ({ close }: Props) => {
     >
       <Textarea
         placeholder="Your message (200 symbols max)"
+        autosize
+        minRows={2}
+        maxRows={4}
         label="Message"
         withAsterisk
         {...form.getInputProps("message")}

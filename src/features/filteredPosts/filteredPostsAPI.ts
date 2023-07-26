@@ -1,6 +1,7 @@
 // A mock function to mimic making an async request for data
 import { PostContents } from "../posts/types"
 import { POSTS } from "../posts/mocks"
+import { includes } from "lodash"
 
 export type FetchFilteredPostsParams = {
   filterBy: string
@@ -14,13 +15,13 @@ const findFilteredPosts = ({
   query,
   posts,
 }: FetchFilteredPostsParams) => {
-  // TODO: add search by author
-  // return POSTS.filter((post) => post.message.includes(query))
-
   const regex = new RegExp(query, "i")
 
   const postsToFilter = posts.length > 0 ? posts : POSTS
 
+  if (filterBy === "author") {
+    return postsToFilter.filter((post) => includes(post.author, query))
+  }
   return postsToFilter.filter((post) => regex.test(post.message))
 }
 
