@@ -1,14 +1,23 @@
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { Provider } from "react-redux"
 import { store } from "./app/store"
-import {MainPage} from "./routes/mainPage";
+import { MainPage } from "./routes/mainPage"
+import React from "react"
+import { BrowserRouter } from "react-router-dom"
+import { POSTS } from "./features/posts/mocks"
 
-test("renders learn react link", () => {
-  const { getByText } = render(
+test("eventually renders posts heading and mock posts on main page", async () => {
+  render(
     <Provider store={store}>
-      <MainPage />
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
     </Provider>,
   )
 
-  expect(getByText(/posts/i)).toBeInTheDocument()
+  const header = await screen.findByText(/posts/i)
+  expect(header).toBeVisible()
+
+  const items = screen.getAllByTestId("post")
+  expect(items).toHaveLength(POSTS.length)
 })

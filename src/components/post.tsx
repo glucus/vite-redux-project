@@ -16,7 +16,7 @@ export const Post = ({ post }: Props) => {
   }
 
   return (
-    <Card withBorder radius="md" p="xs">
+    <Card withBorder radius="md" p="xs" data-testid="post">
       <Group noWrap spacing="sm">
         <div>
           <Text mt="xs" mb="md" align="left">
