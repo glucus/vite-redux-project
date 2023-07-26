@@ -3,7 +3,7 @@ export const POSTS = [
     id: "1",
     author: {
       id: "EnidMerritt",
-      image: "http://placehold.it/32x32",
+      image: "http://placekitten.com/32/32",
       firstName: "Enid",
       lastName: "Merritt",
     },
@@ -15,7 +15,7 @@ export const POSTS = [
     id: "2",
     author: {
       id: "JosefaDillon",
-      image: "http://placehold.it/32x32",
+      image: "http://placekitten.com/32/32",
       firstName: "Josefa",
       lastName: "Dillon",
     },
@@ -27,7 +27,7 @@ export const POSTS = [
     id: "3",
     author: {
       id: "WolfeStrickland",
-      image: "http://placehold.it/32x32",
+      image: "http://placekitten.com/32/32",
       firstName: "Wolfe",
       lastName: "Strickland",
     },
@@ -39,7 +39,7 @@ export const POSTS = [
     id: "4",
     author: {
       id: "MarieKlein",
-      image: "http://placehold.it/32x32",
+      image: "http://placekitten.com/32/32",
       firstName: "Marie",
       lastName: "Klein",
     },
@@ -51,7 +51,7 @@ export const POSTS = [
     id: "5",
     author: {
       id: "MarieKlein",
-      image: "http://placehold.it/32x32",
+      image: "http://placekitten.com/32/32",
       firstName: "Marie",
       lastName: "Klein",
     },
