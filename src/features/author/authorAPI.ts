@@ -9,7 +9,6 @@ const findAuthorById = (authorId: string) => AUTHORS[authorId] || null
 export const fetchAuthor = ({ authorId }: FetchAuthorParams) => {
   const author = findAuthorById(authorId)
 
-  // TODO: Add response type
   return new Promise<{ data: Author | null }>((resolve) => {
     console.log(`fetching data for author ${authorId}`)
     setTimeout(() => resolve({ data: author }), 500)

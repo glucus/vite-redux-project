@@ -23,7 +23,6 @@ const initialState: State = {
 // typically used to make async requests.
 export const fetchPostsAsync = createAsyncThunk(
   "posts/fetchPosts",
-  // TODO: какие параметры должны быть
   async () => {
     const response = await fetchPosts()
     // The value we return becomes the `fulfilled` action payload
