@@ -6,6 +6,12 @@ export type FetchAuthorParams = { authorId: string }
 
 const findAuthorById = (authorId: string) => AUTHORS[authorId] || null
 
+/**
+ * GET AUTHOR
+ * @param authorId
+ * @return Author
+ */
+
 export const fetchAuthor = ({ authorId }: FetchAuthorParams) => {
   const author = findAuthorById(authorId)
 

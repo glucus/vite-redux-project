@@ -6,7 +6,6 @@ export const AUTHORS: Authors = {
   EnidMerritt: {
     id: "EnidMerritt",
     image: "http://placehold.it/32x32",
-    age: 36,
     firstName: "Enid",
     lastName: "Merritt",
     email: "enidmerritt@halap.com",
@@ -17,7 +16,6 @@ export const AUTHORS: Authors = {
   JosefaDillon: {
     id: "JosefaDillon",
     image: "http://placehold.it/32x32",
-    age: 29,
     firstName: "Josefa",
     lastName: "Dillon",
     email: "josefadillon@halap.com",
@@ -28,7 +26,6 @@ export const AUTHORS: Authors = {
   RosarioDavis: {
     id: "RosarioDavis",
     image: "http://placehold.it/32x32",
-    age: 36,
     firstName: "Rosario",
     lastName: "Davis",
     email: "rosariodavis@halap.com",
@@ -39,7 +36,6 @@ export const AUTHORS: Authors = {
   MarieKlein: {
     id: "MarieKlein",
     image: "http://placehold.it/32x32",
-    age: 27,
     firstName: "Marie",
     lastName: "Klein",
     email: "marieklein@halap.com",
@@ -50,7 +46,6 @@ export const AUTHORS: Authors = {
   WolfeStrickland: {
     id: "WolfeStrickland",
     image: "http://placehold.it/32x32",
-    age: 40,
     firstName: "Wolfe",
     lastName: "Strickland",
     email: "wolfestrickland@halap.com",
@@ -61,7 +56,6 @@ export const AUTHORS: Authors = {
   PatelDickerson: {
     id: "PatelDickerson",
     image: "http://placehold.it/32x32",
-    age: 38,
     firstName: "Patel",
     lastName: "Dickerson",
     email: "pateldickerson@halap.com",
@@ -72,7 +66,6 @@ export const AUTHORS: Authors = {
   LawrenceTillman: {
     id: "LawrenceTillman",
     image: "http://placehold.it/32x32",
-    age: 32,
     firstName: "Lawrence",
     lastName: "Tillman",
     email: "lawrencetillman@halap.com",
@@ -83,7 +76,6 @@ export const AUTHORS: Authors = {
   BlanchardSellers: {
     id: "BlanchardSellers",
     image: "http://placehold.it/32x32",
-    age: 31,
     firstName: "Blanchard",
     lastName: "Sellers",
     email: "blanchardsellers@halap.com",
@@ -94,7 +86,6 @@ export const AUTHORS: Authors = {
   NguyenJoseph: {
     id: "NguyenJoseph",
     image: "http://placehold.it/32x32",
-    age: 32,
     firstName: "Nguyen",
     lastName: "Joseph",
     email: "nguyenjoseph@halap.com",
@@ -107,7 +98,6 @@ export const AUTHORS: Authors = {
 export const NEW_POST_AUTHOR = {
   id: "NguyenJoseph",
   image: "http://placehold.it/32x32",
-  age: 32,
   firstName: "Nguyen",
   lastName: "Joseph",
   email: "nguyenjoseph@halap.com",
