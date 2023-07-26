@@ -38,5 +38,12 @@ export const Author = () => {
       </Group>
     )
   }
+  if (status === "idle" && !author) {
+    return (
+      <Group>
+        <Text>No authors found</Text>
+      </Group>
+    )
+  }
   return null
 }

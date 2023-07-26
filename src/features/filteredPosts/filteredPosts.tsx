@@ -5,7 +5,7 @@ import { filteredPostsStateSelector } from "./filteredPostsSlice"
 import { postsStateSelector } from "../posts/postsSlice"
 import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
-import { Stack, Center, Loader } from "@mantine/core"
+import { Stack, Center, Loader, Group } from "@mantine/core"
 import { Text } from "@mantine/core"
 import { useSearchParams } from "react-router-dom"
 
@@ -42,11 +42,7 @@ export const FilteredPosts = () => {
     )
   }
   if (filteredPostsStatus === "failed") {
-    return (
-      <div>
-        <Text>Failed loading content</Text>
-      </div>
-    )
+    return <Text>Failed loading content</Text>
   }
   if (filteredPostsStatus === "idle" && filteredPosts?.length > 0) {
     return (
@@ -57,6 +53,13 @@ export const FilteredPosts = () => {
           ))}
         </Stack>
       </>
+    )
+  }
+  if (filteredPostsStatus === "idle" && filteredPosts?.length === 0) {
+    return (
+      <Group>
+        <Text>No matching posts found</Text>
+      </Group>
     )
   }
   return null

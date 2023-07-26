@@ -3,7 +3,7 @@ import { postsStateSelector } from "../posts/postsSlice"
 import { fetchPostsAsync } from "../posts/postsSlice"
 import { useEffect } from "react"
 import { Post } from "../../components/post"
-import { Stack, Center, Loader, Title } from "@mantine/core"
+import { Stack, Center, Loader, Title, Group } from "@mantine/core"
 import { Text } from "@mantine/core"
 
 export const Posts = () => {
@@ -38,6 +38,13 @@ export const Posts = () => {
           <Post post={post} key={post.id} />
         ))}
       </Stack>
+    )
+  }
+  if (status === "idle" && posts?.length === 0) {
+    return (
+      <Group>
+        <Text>No posts found</Text>
+      </Group>
     )
   }
   return null
