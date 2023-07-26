@@ -1,7 +1,7 @@
 // A mock function to mimic making an async request for data
 import { PostContents } from "../posts/types"
 import { POSTS } from "../posts/mocks"
-import { includes } from "lodash"
+import includes from "lodash/includes"
 
 export type FetchFilteredPostsParams = {
   filterBy: string

@@ -1,12 +1,17 @@
 import { Author } from "./types"
 import { Card, Group, Text, Avatar, Stack } from "@mantine/core"
-import moment from "moment"
+import { format } from "date-fns"
 
 type Props = {
   author: Author
 }
 export const AuthorInfo = ({ author }: Props) => {
   const { image, firstName, lastName, about, email, registered } = author
+
+  const formatRegistered = (registered: string) => {
+    const date = Date.parse(registered)
+    return format(date, "MMM do yyyy")
+  }
 
   return (
     <Card radius="md" p="xs">
@@ -20,7 +25,7 @@ export const AuthorInfo = ({ author }: Props) => {
                 {email}
               </Text>
               <Text size="sm" color="dimmed">
-                {`Registered ${moment(registered).format("MMMM D YYYY")}`}
+                {`Registered ${formatRegistered(registered)}`}
               </Text>
             </Stack>
           </Group>

@@ -1,7 +1,8 @@
 import { Card, Group, Text, Avatar } from "@mantine/core"
 import { useNavigate } from "react-router-dom"
 import { PostContents } from "../features/posts/types"
-import moment from "moment"
+import { format } from 'date-fns';
+
 type Props = {
   post: PostContents
   key: string
@@ -13,6 +14,11 @@ export const Post = ({ post }: Props) => {
 
   const handleAuthorClick = () => {
     navigate(`/authors/${author.id}`)
+  }
+
+  const formatPosted = (posted: string) => {
+    const date = Date.parse(posted)
+    return format(date, "MMMM do yyyy, h:mm a")
   }
 
   return (
@@ -28,7 +34,7 @@ export const Post = ({ post }: Props) => {
               <Text size="sm" fw={600} color="teal">{`${author.firstName} ${author.lastName}`}</Text>
             </Group>
             <Text size="sm" color="dimmed">
-              {`Posted ${moment(posted).format("MMMM Do YYYY, h:mm a")}`}
+              {`Posted ${formatPosted(posted)}`}
             </Text>
           </Group>
         </div>

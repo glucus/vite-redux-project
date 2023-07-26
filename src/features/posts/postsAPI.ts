@@ -3,7 +3,7 @@ import { PostContents } from "./types"
 import { AddPostFormState } from "../../components/addPost/addPostForm"
 import { POSTS } from "./mocks"
 import { NEW_POST_AUTHOR } from "../author/mocks"
-import { uniqueId } from "lodash"
+import uniqueId from "lodash/uniqueId"
 
 /** GET POSTS
  * Выдает все посты, можно добавить параметры типа количество постов за раз
