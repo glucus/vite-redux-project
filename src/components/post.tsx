@@ -22,13 +22,13 @@ export const Post = ({ post }: Props) => {
           <Text mt="xs" mb="md" align="left">
             {message}
           </Text>
-          <Group noWrap spacing="xs">
-            <Group spacing="sm" noWrap onClick={handleAuthorClick}>
+          <Group spacing="xs">
+            <Group spacing="xs" noWrap onClick={handleAuthorClick}>
               <Avatar size="sm" src={author.image} />
-              <Text size="sm">{`${author.firstName} ${author.lastName}`}</Text>
+              <Text size="sm" fw={600} color="teal">{`${author.firstName} ${author.lastName}`}</Text>
             </Group>
             <Text size="sm" color="dimmed">
-              {moment(posted).format("MMMM Do YYYY, h:mm a")}
+              {`Posted ${moment(posted).format("MMMM Do YYYY, h:mm a")}`}
             </Text>
           </Group>
         </div>
