@@ -8,8 +8,9 @@ const findAuthorById = (authorId: string) => AUTHORS[authorId] || null
 
 /**
  * GET AUTHOR
+ * Выдает данные по автору поста
  * @param authorId
- * @return Author
+ * @returns Author или Error
  */
 
 export const fetchAuthor = ({ authorId }: FetchAuthorParams) => {

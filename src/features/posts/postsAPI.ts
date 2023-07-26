@@ -5,6 +5,12 @@ import { POSTS } from "./mocks"
 import { NEW_POST_AUTHOR } from "../author/mocks"
 import { uniqueId } from "lodash"
 
+/** GET POSTS
+ * Выдает все посты, можно добавить параметры типа количество постов за раз
+ * @params
+ * @returns массив постов PostContents (может быть пустым) или Error
+ */
+
 export const fetchPosts = () => {
   return new Promise<{ data: PostContents[] | [] }>((resolve) => {
     console.log("fetching posts")
@@ -28,6 +34,12 @@ const addPostInfo = (data: AddPostFormState) => {
     posted: isoString,
   }
 }
+
+/** POST POST
+ * Создает новый пост
+ * @params post: AddPostFormState (message: string, id автора)
+ * @returns созданный пост в формате postContent или Error
+ */
 
 export const createPost = (post: AddPostFormState) => {
   const postContent = addPostInfo(post)

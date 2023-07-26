@@ -25,6 +25,14 @@ const findFilteredPosts = ({
   return postsToFilter.filter((post) => regex.test(post.message))
 }
 
+/** GET POSTS BY PARAMS
+ * @params - фильтр и значение фильтра
+ * filterBy: string
+ * query: string
+ * можно добавить параметры типа количество постов за раз и другие фильтры
+ * @returns массив постов PostContents (может быть пустым) или Error
+ * */
+
 export const fetchFilteredPosts = (params: FetchFilteredPostsParams) => {
   const filteredPosts = findFilteredPosts(params)
 
