@@ -1,7 +1,9 @@
 import { Card, Group, Text, Avatar } from "@mantine/core"
-import { useNavigate } from "react-router-dom"
-import { PostContents } from "../features/posts/types"
-import { format } from 'date-fns';
+import { Link } from "react-router-dom"
+import { PostContents } from "../../features/posts/types"
+import { format } from "date-fns"
+
+import styles from "./index.module.css"
 
 type Props = {
   post: PostContents
@@ -9,12 +11,7 @@ type Props = {
 }
 
 export const Post = ({ post }: Props) => {
-  const navigate = useNavigate()
   const { message, author, posted } = post
-
-  const handleAuthorClick = () => {
-    navigate(`/authors/${author.id}`)
-  }
 
   const formatPosted = (posted: string) => {
     const date = Date.parse(posted)
@@ -29,10 +26,16 @@ export const Post = ({ post }: Props) => {
             {message}
           </Text>
           <Group spacing="xs">
-            <Group spacing="xs" noWrap onClick={handleAuthorClick}>
-              <Avatar size="sm" src={author.image} />
-              <Text size="sm" fw={600} color="teal">{`${author.firstName} ${author.lastName}`}</Text>
-            </Group>
+            <Link to={`/authors/${author.id}`} className={styles.link}>
+              <Group spacing="xs" noWrap>
+                <Avatar size="sm" src={author.image} />
+                <Text
+                  size="sm"
+                  fw={600}
+                  color="teal"
+                >{`${author.firstName} ${author.lastName}`}</Text>
+              </Group>
+            </Link>
             <Text size="sm" color="dimmed">
               {`Posted ${formatPosted(posted)}`}
             </Text>
