@@ -5,9 +5,6 @@ import { MainPage } from "./routes/mainPage"
 import React from "react"
 import { BrowserRouter, MemoryRouter } from "react-router-dom"
 import { POSTS } from "./features/posts/mocks"
-import { AuthorPage } from "./routes/authorPage"
-import { AUTHORS } from "./features/author/mocks"
-import { Regex } from "tabler-icons-react"
 import { FilteredPostsPage } from "./routes/filteredPosts"
 
 test("eventually renders posts heading and mock posts on main page", async () => {

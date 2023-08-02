@@ -1,5 +1,5 @@
 import { TextInput, ActionIcon, Group } from "@mantine/core"
-import { Search, X } from "tabler-icons-react"
+import { IconSearch, IconX } from "@tabler/icons-react"
 import { useState } from "react"
 
 import { useNavigate, useSearchParams } from "react-router-dom"
@@ -34,11 +34,11 @@ export const SearchField = () => {
     <Group spacing="sm">
       <TextInput
         type="search"
-        icon={<Search size="1rem" />}
+        icon={<IconSearch size="1rem" />}
         rightSection={
           value && (
             <ActionIcon onClick={handleCloseClick}>
-              <X size="1rem" />
+              <IconX size="1rem" />
             </ActionIcon>
           )
         }
