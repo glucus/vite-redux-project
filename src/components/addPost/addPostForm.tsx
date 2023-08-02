@@ -34,7 +34,7 @@ export const AddPostForm = ({ close }: Props) => {
         close()
       })
     },
-    [close, dispatch, form, createPostAsync],
+    [close, dispatch, form],
   )
 
   return (
