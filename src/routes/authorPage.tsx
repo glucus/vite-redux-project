@@ -17,7 +17,7 @@ export const AuthorPage = () => {
   return (
     <Container>
       <Author />
-      <FilteredPosts />
+      <FilteredPosts title="Posts by author" />
     </Container>
   )
 }

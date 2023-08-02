@@ -5,11 +5,15 @@ import { filteredPostsStateSelector } from "./filteredPostsSlice"
 import { postsStateSelector } from "../posts/postsSlice"
 import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
-import { Stack, Center, Loader, Group } from "@mantine/core"
+import { Stack, Center, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
 import { useSearchParams } from "react-router-dom"
 
-export const FilteredPosts = () => {
+type Params = {
+  title: string
+}
+
+export const FilteredPosts = ({ title }: Params) => {
   let [searchParams] = useSearchParams()
 
   const { filteredPosts, status: filteredPostsStatus } = useAppSelector(
@@ -48,6 +52,7 @@ export const FilteredPosts = () => {
     return (
       <>
         <Stack>
+          <Title order={3}>{title}</Title>
           {filteredPosts.map((post) => (
             <Post post={post} key={post.id} />
           ))}
@@ -57,9 +62,10 @@ export const FilteredPosts = () => {
   }
   if (filteredPostsStatus === "idle" && filteredPosts?.length === 0) {
     return (
-      <Group>
+      <Stack>
+        <Title order={3}>{title}</Title>
         <Text>No matching posts found</Text>
-      </Group>
+      </Stack>
     )
   }
   return null
