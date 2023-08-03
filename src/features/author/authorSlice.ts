@@ -5,7 +5,7 @@ import { Author } from "./types"
 
 export interface State {
   author: null | Author
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed" | "success"
 }
 
 const initialState: State = {
@@ -40,7 +40,7 @@ export const authorSlice = createSlice({
         state.status = "loading"
       })
       .addCase(fetchAuthorAsync.fulfilled, (state, action) => {
-        state.status = "idle"
+        state.status = "success"
         state.author = action.payload
       })
       .addCase(fetchAuthorAsync.rejected, (state) => {

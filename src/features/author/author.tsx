@@ -15,7 +15,7 @@ export const Author = () => {
     if (status === "idle" && authorId) {
       dispatch(fetchAuthorAsync({ authorId }))
     }
-  }, [authorId, dispatch, fetchAuthorAsync])
+  }, [authorId, dispatch, status])
 
   if (status === "loading") {
     return (
@@ -31,14 +31,14 @@ export const Author = () => {
       </Group>
     )
   }
-  if (status === "idle" && author) {
+  if (status === "success" && author) {
     return (
       <Group>
         <AuthorInfo author={author} />
       </Group>
     )
   }
-  if (status === "idle" && !author) {
+  if (status === "success" && !author) {
     return (
       <Group>
         <Text>No authors found</Text>
