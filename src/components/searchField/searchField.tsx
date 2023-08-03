@@ -2,17 +2,18 @@ import { TextInput, ActionIcon, Group } from "@mantine/core"
 import { IconSearch, IconX } from "@tabler/icons-react"
 import { useState } from "react"
 
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useNavigate, createSearchParams } from "react-router-dom"
 
 export const SearchField = () => {
   const [value, setValue] = useState("")
 
   const navigate = useNavigate()
-  let [searchParams, setSearchParams] = useSearchParams()
 
   const navigateToFilteredPage = () => {
-    navigate("/filtered", { replace: true })
-    setSearchParams({ query: value })
+    navigate({
+      pathname: "/filtered/",
+      search: createSearchParams({ query: value }).toString(),
+    })
   }
 
   const handleChange = (query: string) => {
