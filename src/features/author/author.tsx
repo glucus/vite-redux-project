@@ -12,10 +12,10 @@ export const Author = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (status === "idle" && authorId) {
+    if (authorId && authorId !== author?.id) {
       dispatch(fetchAuthorAsync({ authorId }))
     }
-  }, [authorId, dispatch, status])
+  }, [author, authorId, dispatch, status])
 
   if (status === "loading") {
     return (
