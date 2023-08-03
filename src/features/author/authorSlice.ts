@@ -1,16 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
-import { fetchAuthor, FetchAuthorParams } from "./authorAPI"
+import {
+  fetchAuthor,
+  FetchAuthorParams,
+  fetchPostsByAuthor,
+  FetchPostsByAuthorParams,
+} from "./authorAPI"
 import { Author } from "./types"
+import { PostContents } from "../posts/types"
 
 export interface State {
   author: null | Author
   status: "idle" | "loading" | "failed" | "success"
+  postsByAuthor: PostContents[] | []
+  postsByAuthorStatus: "idle" | "loading" | "failed" | "success"
 }
 
 const initialState: State = {
   author: null,
   status: "idle",
+  postsByAuthor: [],
+  postsByAuthorStatus: "idle",
 }
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -23,6 +33,15 @@ export const fetchAuthorAsync = createAsyncThunk(
   "author/fetchAuthor",
   async ({ authorId }: FetchAuthorParams) => {
     const response = await fetchAuthor({ authorId })
+    // The value we return becomes the `fulfilled` action payload
+    return response.data
+  },
+)
+
+export const fetchPostsByAuthorAsync = createAsyncThunk(
+  "author/fetchPostsByAuthor",
+  async (params: FetchPostsByAuthorParams) => {
+    const response = await fetchPostsByAuthor(params)
     // The value we return becomes the `fulfilled` action payload
     return response.data
   },
@@ -45,6 +64,16 @@ export const authorSlice = createSlice({
       })
       .addCase(fetchAuthorAsync.rejected, (state) => {
         state.status = "failed"
+      })
+      .addCase(fetchPostsByAuthorAsync.pending, (state) => {
+        state.postsByAuthorStatus = "loading"
+      })
+      .addCase(fetchPostsByAuthorAsync.fulfilled, (state, action) => {
+        state.postsByAuthorStatus = "success"
+        state.postsByAuthor = action.payload
+      })
+      .addCase(fetchPostsByAuthorAsync.rejected, (state) => {
+        state.postsByAuthorStatus = "failed"
       })
   },
 })
