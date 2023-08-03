@@ -19,24 +19,17 @@ export const FilteredPosts = ({ title }: Params) => {
   const { filteredPosts, status: filteredPostsStatus } = useAppSelector(
     filteredPostsStateSelector,
   )
-  const { posts, status } = useAppSelector(postsStateSelector)
+  const { posts } = useAppSelector(postsStateSelector)
   const dispatch = useAppDispatch()
 
-  const filterBy = searchParams?.get("filterBy")
   const query = searchParams?.get("query")
 
   useEffect(() => {
-    if (
-      filteredPostsStatus === "idle" &&
-      filterBy &&
-      query &&
-      status === "idle" &&
-      posts
-    ) {
+    if (query && posts) {
       // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
-      dispatch(fetchFilteredPostsAsync({ filterBy, query, posts }))
+      dispatch(fetchFilteredPostsAsync({ query, posts }))
     }
-  }, [filterBy, query, dispatch, posts, filteredPostsStatus, status])
+  }, [dispatch, posts, query])
 
   if (filteredPostsStatus === "loading") {
     return (

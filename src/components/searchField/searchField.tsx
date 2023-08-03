@@ -5,7 +5,6 @@ import { useState } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 
 export const SearchField = () => {
-  const [filterBy, setFilterBy] = useState<"author" | "message">("message")
   const [value, setValue] = useState("")
 
   const navigate = useNavigate()
@@ -13,7 +12,7 @@ export const SearchField = () => {
 
   const navigateToFilteredPage = () => {
     navigate("/filtered", { replace: true })
-    setSearchParams({ filterBy: filterBy, query: value })
+    setSearchParams({ query: value })
   }
 
   const handleChange = (query: string) => {
