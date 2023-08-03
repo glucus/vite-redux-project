@@ -24,7 +24,7 @@ export const PostsByAuthor = () => {
       // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
       dispatch(fetchPostsByAuthorAsync({ authorId, posts }))
     }
-  }, [dispatch, posts, postsByAuthorStatus, status, authorId])
+  }, [dispatch, posts, postsByAuthorStatus, status, authorId, postsByAuthor])
 
   if (postsByAuthorStatus === "loading") {
     return (
