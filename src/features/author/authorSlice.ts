@@ -8,6 +8,7 @@ import {
 } from "./authorAPI"
 import { Author } from "./types"
 import { PostContents } from "../posts/types"
+import { createPostAsync } from "../posts/postsSlice"
 
 export interface State {
   author: null | Author
@@ -74,6 +75,13 @@ export const authorSlice = createSlice({
       })
       .addCase(fetchPostsByAuthorAsync.rejected, (state) => {
         state.postsByAuthorStatus = "failed"
+      })
+      // TODO: для отображения нового сообщения на моках
+      .addCase(createPostAsync.fulfilled, (state, action) => {
+        state.postsByAuthor =
+          action.payload.author.id === state.author?.id
+            ? [...state.postsByAuthor, action.payload]
+            : state.postsByAuthor
       })
   },
 })
