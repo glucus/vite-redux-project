@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { postsStateSelector } from "../posts/postsSlice"
-import { fetchPostsAsync } from "../posts/postsSlice"
+import { postsStateSelector } from "./postsSlice"
+import { fetchPostsAsync } from "./postsSlice"
 import { useEffect } from "react"
 import { Post } from "../../components/post"
 import { Stack, Center, Loader, Title, Group } from "@mantine/core"

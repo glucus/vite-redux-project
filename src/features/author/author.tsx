@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Group, Loader, Center, Text } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { fetchAuthorAsync, authorStateSelector } from "../author/authorSlice"
+import { fetchAuthorAsync, authorStateSelector } from "./authorSlice"
 import { AuthorInfo } from "./authorInfo"
 
 export const Author = () => {
