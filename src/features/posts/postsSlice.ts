@@ -6,7 +6,7 @@ import { AddPostFormState } from "../../components/addPost/addPostForm"
 
 export interface State {
   posts: [] | PostContents[]
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed" | "success"
   createPostStatus: "idle" | "loading" | "failed" | "success"
 }
 
@@ -51,7 +51,7 @@ export const postsSlice = createSlice({
         state.status = "loading"
       })
       .addCase(fetchPostsAsync.fulfilled, (state, action) => {
-        state.status = "idle"
+        state.status = "success"
         state.posts = action.payload
       })
       .addCase(fetchPostsAsync.rejected, (state) => {

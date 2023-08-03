@@ -14,7 +14,7 @@ export const Posts = () => {
     if (status === "idle") {
       dispatch(fetchPostsAsync())
     }
-  }, [dispatch, fetchPostsAsync])
+  }, [dispatch, status])
 
   if (status === "loading") {
     return (
@@ -30,7 +30,7 @@ export const Posts = () => {
       </div>
     )
   }
-  if (status === "idle" && posts?.length > 0) {
+  if (status === "success" && posts?.length > 0) {
     return (
       <Stack>
         <Title order={3}>Posts</Title>
@@ -40,7 +40,7 @@ export const Posts = () => {
       </Stack>
     )
   }
-  if (status === "idle" && posts?.length === 0) {
+  if (status === "success" && posts?.length === 0) {
     return (
       <Group>
         <Text>No posts found</Text>
