@@ -36,7 +36,7 @@ export const FilteredPosts = ({ title }: Params) => {
       // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
       dispatch(fetchFilteredPostsAsync({ filterBy, query, posts }))
     }
-  }, [filterBy, query, dispatch, fetchFilteredPostsAsync, posts])
+  }, [filterBy, query, dispatch, posts, filteredPostsStatus, status])
 
   if (filteredPostsStatus === "loading") {
     return (
@@ -48,7 +48,7 @@ export const FilteredPosts = ({ title }: Params) => {
   if (filteredPostsStatus === "failed") {
     return <Text>Failed loading content</Text>
   }
-  if (filteredPostsStatus === "idle" && filteredPosts?.length > 0) {
+  if (filteredPostsStatus === "success" && filteredPosts?.length > 0) {
     return (
       <>
         <Stack>
@@ -60,7 +60,7 @@ export const FilteredPosts = ({ title }: Params) => {
       </>
     )
   }
-  if (filteredPostsStatus === "idle" && filteredPosts?.length === 0) {
+  if (filteredPostsStatus === "success" && filteredPosts?.length === 0) {
     return (
       <Stack>
         <Title order={3}>{title}</Title>
