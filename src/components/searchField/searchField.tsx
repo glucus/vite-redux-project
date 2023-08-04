@@ -22,6 +22,9 @@ export const SearchField = () => {
 
   const handleCloseClick = () => {
     setValue("")
+    navigate({
+      pathname: "/",
+    })
   }
 
   const handleKeyUp = (key: string) => {
