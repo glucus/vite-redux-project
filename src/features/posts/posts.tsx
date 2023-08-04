@@ -33,7 +33,7 @@ export const Posts = () => {
         )
       }
       case "success": {
-        if (posts?.length > 0) {
+        if (posts.length > 0) {
           return (
             <Stack>
               <Title order={3}>Posts</Title>
