@@ -6,7 +6,7 @@ import { fetchAuthorAsync, authorStateSelector } from "./authorSlice"
 import { AuthorInfo } from "./authorInfo"
 
 export const Author = () => {
-  let { authorId } = useParams<{ authorId: string }>()
+  const { authorId } = useParams<{ authorId: string }>()
 
   const { author, status } = useAppSelector(authorStateSelector)
   const dispatch = useAppDispatch()

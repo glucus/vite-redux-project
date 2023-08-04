@@ -3,7 +3,7 @@ import { Container, Center, Stack, Title, Text } from "@mantine/core"
 import { HomeButton } from "../components/homeButton"
 
 export const ErrorPage = () => {
-  let error = useRouteError()
+  const error = useRouteError()
 
   if (isRouteErrorResponse(error)) {
     return (

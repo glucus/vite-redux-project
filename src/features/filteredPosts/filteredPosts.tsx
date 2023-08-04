@@ -10,7 +10,7 @@ import { Stack, Center, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
 
 export const FilteredPosts = () => {
-  let [searchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
 
   const { filteredPosts, status: filteredPostsStatus } = useAppSelector(
     filteredPostsStateSelector,
