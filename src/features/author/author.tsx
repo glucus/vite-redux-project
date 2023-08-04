@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { useParams } from "react-router-dom"
 import { Group, Loader, Center, Text, Stack } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
@@ -19,34 +19,42 @@ export const Author = () => {
     }
   }, [authorId, dispatch])
 
-  if (status === "loading") {
-    return (
-      <Center>
-        <Loader />
-      </Center>
-    )
-  }
-  if (status === "failed") {
-    return (
-      <Group>
-        <Text>Failed loading content</Text>
-      </Group>
-    )
-  }
-  if (status === "success" && author) {
-    return (
-      <Stack>
-        <AuthorInfo author={author} />
-        <PostsByAuthor />
-      </Stack>
-    )
-  }
-  if (status === "success" && !author) {
-    return (
-      <Group>
-        <Text>No authors found</Text>
-      </Group>
-    )
-  }
-  return null
+  const content = useMemo(() => {
+    switch (status) {
+      case "loading": {
+        return (
+          <Center>
+            <Loader />
+          </Center>
+        )
+      }
+      case "failed": {
+        return (
+          <Group>
+            <Text>Failed loading content</Text>
+          </Group>
+        )
+      }
+      case "success": {
+        if (author) {
+          return (
+            <Stack>
+              <AuthorInfo author={author} />
+              <PostsByAuthor />
+            </Stack>
+          )
+        } else {
+          return (
+            <Group>
+              <Text>No authors found</Text>
+            </Group>
+          )
+        }
+      }
+      default:
+        return null
+    }
+  }, [author, status])
+
+  return content
 }
