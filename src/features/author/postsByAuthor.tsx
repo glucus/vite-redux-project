@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { authorStateSelector, fetchPostsByAuthorAsync } from "./authorSlice"
@@ -25,35 +25,43 @@ export const PostsByAuthor = () => {
     }
   }, [authorId, dispatch, posts])
 
-  if (postsByAuthorStatus === "loading") {
-    return (
-      <Center>
-        <Loader size="sm" variant="dots" />
-      </Center>
-    )
-  }
-  if (postsByAuthorStatus === "failed") {
-    return <Text>Failed loading content</Text>
-  }
-  if (postsByAuthorStatus === "success" && postsByAuthor?.length > 0) {
-    return (
-      <>
-        <Stack>
-          <Title order={3}>Posts by author</Title>
-          {postsByAuthor.map((post) => (
-            <Post post={post} key={post.id} />
-          ))}
-        </Stack>
-      </>
-    )
-  }
-  if (postsByAuthorStatus === "success" && postsByAuthor?.length === 0) {
-    return (
-      <Stack>
-        <Title order={3}>Posts by author</Title>
-        <Text>No matching posts found</Text>
-      </Stack>
-    )
-  }
-  return null
+  const content = useMemo(() => {
+    switch (postsByAuthorStatus) {
+      case "loading": {
+        return (
+          <Center>
+            <Loader size="sm" variant="dots" />
+          </Center>
+        )
+      }
+      case "failed": {
+        return <Text>Failed loading content</Text>
+      }
+      case "success": {
+        if (postsByAuthor?.length > 0) {
+          return (
+            <>
+              <Stack>
+                <Title order={3}>Posts by author</Title>
+                {postsByAuthor.map((post) => (
+                  <Post post={post} key={post.id} />
+                ))}
+              </Stack>
+            </>
+          )
+        } else {
+          return (
+            <Stack>
+              <Title order={3}>Posts by author</Title>
+              <Text>No matching posts found</Text>
+            </Stack>
+          )
+        }
+      }
+      default:
+        return null
+    }
+  }, [postsByAuthor, postsByAuthorStatus])
+
+  return content
 }
