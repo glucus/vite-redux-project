@@ -7,13 +7,16 @@ import { AuthorInfo } from "./authorInfo"
 import { PostsByAuthor } from "./postsByAuthor"
 
 export const Author = () => {
-  let { authorId } = useParams()
+  let { authorId } = useParams<{ authorId: string }>()
 
   const { author, status } = useAppSelector(authorStateSelector)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchAuthorAsync({ authorId }))
+    // authorId обязательный параметр в роуте, но за счет useParams становится опциональным
+    if (authorId) {
+      dispatch(fetchAuthorAsync({ authorId }))
+    }
   }, [authorId, dispatch])
 
   if (status === "loading") {
