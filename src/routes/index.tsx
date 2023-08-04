@@ -5,6 +5,7 @@ import { MainPage } from "./mainPage"
 import { AuthorPage } from "./authorPage"
 import { AppHeader } from "../components/appHeader"
 import { FilteredPostsPage } from "./filteredPosts"
+import { ErrorPage } from "./errorPage"
 
 export const routes = [
   {
@@ -14,6 +15,7 @@ export const routes = [
         <MainPage />
       </AppShell>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "authors/:authorId",
@@ -22,6 +24,7 @@ export const routes = [
         <AuthorPage />
       </AppShell>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "filtered",
@@ -30,5 +33,6 @@ export const routes = [
         <FilteredPostsPage />
       </AppShell>
     ),
+    errorElement: <ErrorPage />,
   },
 ]
