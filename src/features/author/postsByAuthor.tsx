@@ -9,22 +9,16 @@ import { Text } from "@mantine/core"
 import { useParams } from "react-router-dom"
 
 export const PostsByAuthor = () => {
-  let { authorId } = useParams()
-
+  const { authorId } = useParams()
   const { postsByAuthor, postsByAuthorStatus } =
     useAppSelector(authorStateSelector)
-  const { posts, status } = useAppSelector(postsStateSelector)
+  const { posts } = useAppSelector(postsStateSelector)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (
-      authorId &&
-      (postsByAuthor.length === 0 || postsByAuthor[0].author.id !== authorId)
-    ) {
-      // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
-      dispatch(fetchPostsByAuthorAsync({ authorId, posts }))
-    }
-  }, [dispatch, posts, postsByAuthorStatus, status, authorId, postsByAuthor])
+    // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
+    dispatch(fetchPostsByAuthorAsync({ authorId, posts }))
+  }, [authorId, dispatch, posts])
 
   if (postsByAuthorStatus === "loading") {
     return (
