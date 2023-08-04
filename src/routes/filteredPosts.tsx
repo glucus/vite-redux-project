@@ -4,7 +4,7 @@ import { FilteredPosts } from "../features/filteredPosts/filteredPosts"
 export const FilteredPostsPage = () => {
   return (
     <Container>
-      <FilteredPosts title="Filtered results" />
+      <FilteredPosts />
     </Container>
   )
 }

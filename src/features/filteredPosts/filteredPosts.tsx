@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
+import { useSearchParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { filteredPostsStateSelector } from "./filteredPostsSlice"
@@ -7,13 +8,8 @@ import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
 import { Stack, Center, Loader, Title } from "@mantine/core"
 import { Text } from "@mantine/core"
-import { useSearchParams } from "react-router-dom"
 
-type Params = {
-  title: string
-}
-
-export const FilteredPosts = ({ title }: Params) => {
+export const FilteredPosts = () => {
   let [searchParams] = useSearchParams()
 
   const { filteredPosts, status: filteredPostsStatus } = useAppSelector(
@@ -31,35 +27,41 @@ export const FilteredPosts = ({ title }: Params) => {
     }
   }, [dispatch, posts, query])
 
-  if (filteredPostsStatus === "loading") {
-    return (
-      <Center>
-        <Loader size="sm" variant="dots" />
-      </Center>
-    )
-  }
-  if (filteredPostsStatus === "failed") {
-    return <Text>Failed loading content</Text>
-  }
-  if (filteredPostsStatus === "success" && filteredPosts?.length > 0) {
-    return (
-      <>
-        <Stack>
-          <Title order={3}>{title}</Title>
-          {filteredPosts.map((post) => (
-            <Post post={post} key={post.id} />
-          ))}
-        </Stack>
-      </>
-    )
-  }
-  if (filteredPostsStatus === "success" && filteredPosts?.length === 0) {
-    return (
-      <Stack>
-        <Title order={3}>{title}</Title>
-        <Text>No matching posts found</Text>
-      </Stack>
-    )
-  }
-  return null
+  return useMemo(() => {
+    switch (filteredPostsStatus) {
+      case "loading": {
+        return (
+          <Center>
+            <Loader size="sm" variant="dots" />
+          </Center>
+        )
+      }
+      case "failed": {
+        return <Text>Failed loading content</Text>
+      }
+      case "success": {
+        if (filteredPosts?.length > 0) {
+          return (
+            <>
+              <Stack>
+                <Title order={3}>Filtered results</Title>
+                {filteredPosts.map((post) => (
+                  <Post post={post} key={post.id} />
+                ))}
+              </Stack>
+            </>
+          )
+        } else {
+          return (
+            <Stack>
+              <Title order={3}>Filtered results</Title>
+              <Text>No matching posts found</Text>
+            </Stack>
+          )
+        }
+      }
+      default:
+        return null
+    }
+  }, [filteredPosts, filteredPostsStatus])
 }
