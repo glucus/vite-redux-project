@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import { PostContents } from "../../features/posts/types"
 import { format } from "date-fns"
 import { memo } from "react"
-import isEqual from "lodash/isEqual"
 
 import styles from "./index.module.css"
 
@@ -48,5 +47,5 @@ export const Post = memo(
       </Card>
     )
   },
-  (prevProps, nextProps) => isEqual(prevProps.post, nextProps.post),
+  (prevProps, nextProps) => prevProps.post.id === nextProps.post.id,
 )
