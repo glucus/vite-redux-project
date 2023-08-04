@@ -4,8 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { authorStateSelector, fetchPostsByAuthorAsync } from "./authorSlice"
 import { postsStateSelector } from "../posts/postsSlice"
 import { Post } from "../../components/post"
-import { Stack, Center, Loader, Title } from "@mantine/core"
-import { Text } from "@mantine/core"
+import { Center, Loader, Stack, Text, Title } from "@mantine/core"
 import { useParams } from "react-router-dom"
 
 export const PostsByAuthor = () => {
@@ -25,7 +24,7 @@ export const PostsByAuthor = () => {
     }
   }, [authorId, dispatch, posts])
 
-  const content = useMemo(() => {
+  return useMemo(() => {
     switch (postsByAuthorStatus) {
       case "loading": {
         return (
@@ -62,6 +61,4 @@ export const PostsByAuthor = () => {
         return null
     }
   }, [postsByAuthor, postsByAuthorStatus])
-
-  return content
 }

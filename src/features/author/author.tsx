@@ -4,7 +4,6 @@ import { Group, Loader, Center, Text, Stack } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchAuthorAsync, authorStateSelector } from "./authorSlice"
 import { AuthorInfo } from "./authorInfo"
-import { PostsByAuthor } from "./postsByAuthor"
 
 export const Author = () => {
   let { authorId } = useParams<{ authorId: string }>()
@@ -19,7 +18,7 @@ export const Author = () => {
     }
   }, [authorId, dispatch])
 
-  const content = useMemo(() => {
+  return useMemo(() => {
     switch (status) {
       case "loading": {
         return (
@@ -40,7 +39,6 @@ export const Author = () => {
           return (
             <Stack>
               <AuthorInfo author={author} />
-              <PostsByAuthor />
             </Stack>
           )
         } else {
@@ -55,6 +53,4 @@ export const Author = () => {
         return null
     }
   }, [author, status])
-
-  return content
 }
