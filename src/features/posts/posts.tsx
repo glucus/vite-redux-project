@@ -16,7 +16,7 @@ export const Posts = () => {
     }
   }, [dispatch, status])
 
-  const content = useMemo(() => {
+  return useMemo(() => {
     switch (status) {
       case "loading": {
         return (
@@ -54,6 +54,4 @@ export const Posts = () => {
         return null
     }
   }, [posts, status])
-
-  return content
 }
