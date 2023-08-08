@@ -1,34 +1,31 @@
 import { useEffect, useMemo } from "react"
-import { useSearchParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { filteredPostsStateSelector } from "./filteredPostsSlice"
+import { authorStateSelector, fetchPostsByAuthorAsync } from "./authorSlice"
 import { postsStateSelector } from "../posts/postsSlice"
-import { fetchFilteredPostsAsync } from "./filteredPostsSlice"
 import { Post } from "../../components/post"
-import { Stack, Center, Loader, Title } from "@mantine/core"
-import { Text } from "@mantine/core"
+import { Center, Loader, Stack, Text, Title } from "@mantine/core"
+import { useParams } from "react-router-dom"
 
-export const FilteredPosts = () => {
-  const [searchParams] = useSearchParams()
+export const PostsByAuthor = () => {
+  const { authorId } = useParams<{ authorId: string }>()
 
-  const { filteredPosts, status: filteredPostsStatus } = useAppSelector(
-    filteredPostsStateSelector,
-  )
+  const { postsByAuthor, postsByAuthorStatus } =
+    useAppSelector(authorStateSelector)
+
   const { posts } = useAppSelector(postsStateSelector)
   const dispatch = useAppDispatch()
 
-  const query = searchParams?.get("query")
-
   useEffect(() => {
-    if (query && posts) {
+    // authorId обязательный параметр в роуте, но за счет useParams становится опциональным
+    if (authorId) {
       // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
-      dispatch(fetchFilteredPostsAsync({ query, posts }))
+      dispatch(fetchPostsByAuthorAsync({ authorId, posts }))
     }
-  }, [dispatch, posts, query])
+  }, [authorId, dispatch, posts])
 
   return useMemo(() => {
-    switch (filteredPostsStatus) {
+    switch (postsByAuthorStatus) {
       case "loading": {
         return (
           <Center>
@@ -40,12 +37,12 @@ export const FilteredPosts = () => {
         return <Text>Failed loading content</Text>
       }
       case "success": {
-        if (filteredPosts?.length > 0) {
+        if (postsByAuthor?.length > 0) {
           return (
             <>
               <Stack>
-                <Title order={3}>Filtered results</Title>
-                {filteredPosts.map((post) => (
+                <Title order={3}>Posts by author</Title>
+                {postsByAuthor.map((post) => (
                   <Post post={post} key={post.id} />
                 ))}
               </Stack>
@@ -54,7 +51,7 @@ export const FilteredPosts = () => {
         } else {
           return (
             <Stack>
-              <Title order={3}>Filtered results</Title>
+              <Title order={3}>Posts by author</Title>
               <Text>No matching posts found</Text>
             </Stack>
           )
@@ -63,5 +60,5 @@ export const FilteredPosts = () => {
       default:
         return null
     }
-  }, [filteredPosts, filteredPostsStatus])
+  }, [postsByAuthor, postsByAuthorStatus])
 }

@@ -1,16 +1,27 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
-import { fetchAuthor, FetchAuthorParams } from "./authorAPI"
+import {
+  fetchAuthor,
+  FetchAuthorParams,
+  fetchPostsByAuthor,
+  FetchPostsByAuthorParams,
+} from "./authorAPI"
 import { Author } from "./types"
+import { PostContents } from "../posts/types"
+import { createPostAsync } from "../posts/postsSlice"
 
 export interface State {
   author: null | Author
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed" | "success"
+  postsByAuthor: PostContents[] | []
+  postsByAuthorStatus: "idle" | "loading" | "failed" | "success"
 }
 
 const initialState: State = {
   author: null,
   status: "idle",
+  postsByAuthor: [],
+  postsByAuthorStatus: "idle",
 }
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -28,6 +39,15 @@ export const fetchAuthorAsync = createAsyncThunk(
   },
 )
 
+export const fetchPostsByAuthorAsync = createAsyncThunk(
+  "author/fetchPostsByAuthor",
+  async (params: FetchPostsByAuthorParams) => {
+    const response = await fetchPostsByAuthor(params)
+    // The value we return becomes the `fulfilled` action payload
+    return response.data
+  },
+)
+
 export const authorSlice = createSlice({
   name: "author",
   initialState,
@@ -40,11 +60,28 @@ export const authorSlice = createSlice({
         state.status = "loading"
       })
       .addCase(fetchAuthorAsync.fulfilled, (state, action) => {
-        state.status = "idle"
+        state.status = "success"
         state.author = action.payload
       })
       .addCase(fetchAuthorAsync.rejected, (state) => {
         state.status = "failed"
+      })
+      .addCase(fetchPostsByAuthorAsync.pending, (state) => {
+        state.postsByAuthorStatus = "loading"
+      })
+      .addCase(fetchPostsByAuthorAsync.fulfilled, (state, action) => {
+        state.postsByAuthorStatus = "success"
+        state.postsByAuthor = action.payload
+      })
+      .addCase(fetchPostsByAuthorAsync.rejected, (state) => {
+        state.postsByAuthorStatus = "failed"
+      })
+      // TODO: для отображения нового сообщения на моках
+      .addCase(createPostAsync.fulfilled, (state, action) => {
+        state.postsByAuthor =
+          action.payload.author.id === state.author?.id
+            ? [...state.postsByAuthor, action.payload]
+            : state.postsByAuthor
       })
   },
 })

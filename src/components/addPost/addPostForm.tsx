@@ -1,6 +1,6 @@
 import { useForm, hasLength } from "@mantine/form"
 import { Textarea, Box, Group, Button } from "@mantine/core"
-import { useCallback } from "react"
+import { useCallback, useMemo } from "react"
 import { useAppDispatch } from "../../app/hooks"
 import { createPostAsync } from "../../features/posts/postsSlice"
 
@@ -34,28 +34,31 @@ export const AddPostForm = ({ close }: Props) => {
         close()
       })
     },
-    [close, dispatch, form, createPostAsync],
+    [close, dispatch, form],
   )
 
-  return (
-    <Box
-      component="form"
-      maw={400}
-      mx="auto"
-      onSubmit={form.onSubmit(handleSubmit)}
-    >
-      <Textarea
-        placeholder="Your message (200 symbols max)"
-        autosize
-        minRows={2}
-        maxRows={4}
-        label="Message"
-        withAsterisk
-        {...form.getInputProps("message")}
-      />
-      <Group position="right" mt="md">
-        <Button type="submit">Submit</Button>
-      </Group>
-    </Box>
+  return useMemo(
+    () => (
+      <Box
+        component="form"
+        maw={400}
+        mx="auto"
+        onSubmit={form.onSubmit(handleSubmit)}
+      >
+        <Textarea
+          placeholder="Your message (200 symbols max)"
+          autosize
+          minRows={2}
+          maxRows={4}
+          label="Message"
+          withAsterisk
+          {...form.getInputProps("message")}
+        />
+        <Group position="right" mt="md">
+          <Button type="submit">Submit</Button>
+        </Group>
+      </Box>
+    ),
+    [form, handleSubmit],
   )
 }

@@ -8,7 +8,7 @@ import { PostContents } from "../posts/types"
 
 export interface State {
   filteredPosts: [] | PostContents[]
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed" | "success"
 }
 
 const initialState: State = {
@@ -18,8 +18,8 @@ const initialState: State = {
 
 export const fetchFilteredPostsAsync = createAsyncThunk(
   "filteredPosts/fetchFilteredPosts",
-// TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
-    async (params: FetchFilteredPostsParams) => {
+  // TODO: фильтрация на API, posts тут передаются чтобы фильтровались недавние результаты в моках
+  async (params: FetchFilteredPostsParams) => {
     const response = await fetchFilteredPosts(params)
     // The value we return becomes the `fulfilled` action payload
     return response.data
@@ -39,7 +39,7 @@ export const filteredPostsSlice = createSlice({
         state.status = "loading"
       })
       .addCase(fetchFilteredPostsAsync.fulfilled, (state, action) => {
-        state.status = "idle"
+        state.status = "success"
         state.filteredPosts = action.payload
       })
       .addCase(fetchFilteredPostsAsync.rejected, (state) => {

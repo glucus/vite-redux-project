@@ -1,19 +1,19 @@
 import { TextInput, ActionIcon, Group } from "@mantine/core"
-import { Search, X } from "tabler-icons-react"
+import { IconSearch, IconX } from "@tabler/icons-react"
 import { useState } from "react"
 
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useNavigate, createSearchParams } from "react-router-dom"
 
 export const SearchField = () => {
-  const [filterBy, setFilterBy] = useState<"author" | "message">("message")
   const [value, setValue] = useState("")
 
   const navigate = useNavigate()
-  let [searchParams, setSearchParams] = useSearchParams()
 
   const navigateToFilteredPage = () => {
-    navigate("/filtered", { replace: true })
-    setSearchParams({ filterBy: filterBy, query: value })
+    navigate({
+      pathname: "/filtered/",
+      search: createSearchParams({ query: value }).toString(),
+    })
   }
 
   const handleChange = (query: string) => {
@@ -22,6 +22,9 @@ export const SearchField = () => {
 
   const handleCloseClick = () => {
     setValue("")
+    navigate({
+      pathname: "/",
+    })
   }
 
   const handleKeyUp = (key: string) => {
@@ -34,11 +37,11 @@ export const SearchField = () => {
     <Group spacing="sm">
       <TextInput
         type="search"
-        icon={<Search size="1rem" />}
+        icon={<IconSearch size="1rem" />}
         rightSection={
           value && (
             <ActionIcon onClick={handleCloseClick}>
-              <X size="1rem" />
+              <IconX size="1rem" />
             </ActionIcon>
           )
         }
