@@ -15,14 +15,18 @@ export const AuthorInfo = memo(
       return format(date, "MMM do yyyy")
     }
 
+    const fullName = `${firstName} ${lastName}`
+
     return (
       <Card radius="md" p="xs">
         <Group spacing="sm">
           <Group spacing="xs">
             <Group spacing="sm" noWrap>
-              <Avatar size="xl" src={image} />
+              <Avatar size="xl" src={image} alt={fullName} />
               <Stack spacing="xs">
-                <Text size="md" weight={700}>{`${firstName} ${lastName}`}</Text>
+                <Text size="md" weight={700}>
+                  {fullName}
+                </Text>
                 <Text c="teal" size="sm">
                   {email}
                 </Text>
