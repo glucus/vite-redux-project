@@ -3,7 +3,7 @@ import { Modal, Button, Group, LoadingOverlay } from "@mantine/core"
 import { AddPostForm } from "./addPostForm"
 import { useAppSelector } from "../../app/hooks"
 import { postsStateSelector } from "../../features/posts/postsSlice"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { notifications } from "@mantine/notifications"
 import { IconX, IconCheck } from "@tabler/icons-react"
 
@@ -29,15 +29,20 @@ export const AddPost = () => {
     }
   }, [createPostStatus])
 
-  return (
-    <>
-      <Modal opened={opened} onClose={close} title="Write something">
-        <LoadingOverlay visible={createPostStatus === "loading"} />
-        <AddPostForm close={close} />
-      </Modal>
-      <Group position="center">
-        <Button onClick={open}>New post</Button>
-      </Group>
-    </>
+  const content = useMemo(
+    () => (
+      <>
+        <Modal opened={opened} onClose={close} title="Write something">
+          <LoadingOverlay visible={createPostStatus === "loading"} />
+          <AddPostForm close={close} />
+        </Modal>
+        <Group position="center">
+          <Button onClick={open}>New post</Button>
+        </Group>
+      </>
+    ),
+    [close, createPostStatus, open, opened],
   )
+
+  return content
 }
