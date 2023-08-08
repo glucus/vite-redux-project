@@ -37,6 +37,7 @@ export const SearchField = () => {
   )
 
   const searchIcon = useMemo(() => <IconSearch size="1rem" />, [])
+  const crossIcon = useMemo(() => <IconX size="1rem" />, [])
 
   return useMemo(
     () => (
@@ -46,7 +47,7 @@ export const SearchField = () => {
           icon={searchIcon}
           rightSection={
             <ActionIcon onClick={handleCloseClick} disabled={!value}>
-              <IconX size="1rem" />
+              {crossIcon}
             </ActionIcon>
           }
           value={value}
@@ -55,6 +56,6 @@ export const SearchField = () => {
         />
       </Group>
     ),
-    [handleCloseClick, handleKeyUp, searchIcon, value],
+    [crossIcon, handleCloseClick, handleKeyUp, searchIcon, value],
   )
 }
