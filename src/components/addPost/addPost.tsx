@@ -29,7 +29,7 @@ export const AddPost = () => {
     }
   }, [createPostStatus])
 
-  const content = useMemo(
+  return useMemo(
     () => (
       <>
         <Modal opened={opened} onClose={close} title="Write something">
@@ -43,6 +43,4 @@ export const AddPost = () => {
     ),
     [close, createPostStatus, open, opened],
   )
-
-  return content
 }

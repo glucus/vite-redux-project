@@ -20,6 +20,8 @@ export const Post = memo(
       return format(date, "MMMM do yyyy, h:mm a")
     }
 
+    const fullName = `${author.firstName} ${author.lastName}`
+
     return (
       <Card withBorder radius="md" p="xs" data-testid="post">
         <Group noWrap spacing="sm">
@@ -30,12 +32,10 @@ export const Post = memo(
             <Group spacing="xs">
               <Link to={`/authors/${author.id}`} className={styles.link}>
                 <Group spacing="xs" noWrap>
-                  <Avatar size="sm" src={author.image} />
-                  <Text
-                    size="sm"
-                    fw={600}
-                    color="teal"
-                  >{`${author.firstName} ${author.lastName}`}</Text>
+                  <Avatar size="sm" src={author.image} alt={fullName} />
+                  <Text size="sm" fw={600} color="teal">
+                    {fullName}
+                  </Text>
                 </Group>
               </Link>
               <Text size="sm" color="dimmed">
